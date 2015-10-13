@@ -93,6 +93,13 @@ Go back to the Google Spreadsheet you created in **Step 5** above.
 
 The data is exactly as we submitted it in the Google Form in **Step 6**.
 
+### 9. Attempt to Re-Submit the Form using cURL
+
+Paste the cURL command you copied from FireFox into your terminal
+and hit the enter key:
+
+![09-curl-response-in-terminal](https://cloud.githubusercontent.com/assets/194400/10529836/40e63c4e-7399-11e5-8b46-468ec0035c39.png)
+
 ## Background Reading
 
 + http://stackoverflow.com/questions/5119861/record-http-form-posts-via-a-browser
