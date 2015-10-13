@@ -55,9 +55,19 @@ Create a new spreadsheet for the results:
 
 ### 6. Open the Form in *Firefox*
 
-Open the form in ***Firefox*** and open the ***Web Inspector*** to "*Network*":
+Open the form in ***Firefox*** and open the ***Web Inspector*** to "*Network*" and populate the form:
 
 ![06-firefox-inspector-data-in-form](https://cloud.githubusercontent.com/assets/194400/10529514/6ec07b82-7396-11e5-90eb-7125589e95eb.png)
+
+Submit the form with dummy data.
+
+### 7. View the cURL for the `POST` Request issued by the Browser
+
+After you click `Submit` on the form, you will see the request(s)
+being sent to the server, the main one you're interested in
+is the `POST` request which sends the form data to Google.
+
+![07-firefox-inspector-copy-as-curl](https://cloud.githubusercontent.com/assets/194400/10529578/1e03925a-7397-11e5-8dec-9dce7523a8b0.png)
 
 
 
