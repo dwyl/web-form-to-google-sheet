@@ -74,7 +74,15 @@ Right-click on the `POST` row in the "*Network*" inspector then click on "***Cop
 #### 7.1 Example cURL Request
 
 ```sh
-curl 'https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/formResponse' -H 'Host: docs.google.com' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:41.0) Gecko/20100101 Firefox/41.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/viewform?fbzx=-4417037870062614176' -H 'Cookie: S=spreadsheet_forms=QDGgsetEGofY8ACPHHufQw; NID=71=Remk3p7UeYnI01GsXgQ3acVcBgiN8iKiBVrXK9GdwVnop4j9kaBDSWlxWl1vuvTKPdrK66DdXWRFTFo-2Onj0zUyCaJ1xfMACh8hTUb0XBIVYdVJdkr1jvvmlkhZVAkgbow9Scr_X17OI-M9tw4evTQHJ4tU6P7xM695WlCtODmubmt57QgkpTAXNwdZrQ05GqRhWfw; PREF=ID=1111111111111111:FF=0:TM=1442226709:LM=1442226709:V=1:S=es4FGMNhg_KRMNf0; OGP=-5061451:' -H 'Connection: keep-alive' --data 'entry.507774908=23&entry.241430440=tesa&entry.335159234=Female&draftResponse=%5B%2C%2C%22-4417037870062614176%22%5D%0D%0A&pageHistory=0&fvv=0&fbzx=-4417037870062614176'
+curl 'https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/formResponse' \
+-H 'Host: docs.google.com' \
+-H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:41.0) Gecko/20100101 Firefox/41.0' \
+-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+-H 'Accept-Language: en-US,en;q=0.5' --compressed \
+-H 'Referer: https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/viewform?fbzx=-4417037870062614176' \
+-H 'Cookie: S=spreadsheet_forms=QDGgsetEGofY8ACPHHufQw; NID=71=Remk3p7UeYnI01GsXgQ3acVcBgiN8iKiBVrXK9GdwVnop4j9kaBDSWlxWl1vuvTKPdrK66DdXWRFTFo-2Onj0zUyCaJ1xfMACh8hTUb0XBIVYdVJdkr1jvvmlkhZVAkgbow9Scr_X17OI-M9tw4evTQHJ4tU6P7xM695WlCtODmubmt57QgkpTAXNwdZrQ05GqRhWfw; PREF=ID=1111111111111111:FF=0:TM=1442226709:LM=1442226709:V=1:S=es4FGMNhg_KRMNf0; OGP=-5061451:' \
+-H 'Connection: keep-alive' \
+--data 'entry.507774908=23&entry.241430440=tesa&entry.335159234=Female&draftResponse=%5B%2C%2C%22-4417037870062614176%22%5D%0D%0A&pageHistory=0&fvv=0&fbzx=-4417037870062614176'
 ```
 
 ### 8. Confirm the response was recorded in the spreadsheet
