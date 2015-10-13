@@ -53,6 +53,12 @@ Create a new spreadsheet for the results:
 
 ![05-create-responses-spreadsheet](https://cloud.githubusercontent.com/assets/194400/10529468/2153de70-7396-11e5-996a-908c2ac7e2ac.png)
 
+### 6. Open the Form in *Firefox*
+
+Open the form in ***Firefox*** and open the ***Web Inspector*** to "*Network*":
+
+![06-firefox-inspector-data-in-form](https://cloud.githubusercontent.com/assets/194400/10529514/6ec07b82-7396-11e5-90eb-7125589e95eb.png)
+
 
 
 
