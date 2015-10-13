@@ -100,7 +100,14 @@ and hit the enter key:
 
 ![09-curl-response-in-terminal](https://cloud.githubusercontent.com/assets/194400/10529836/40e63c4e-7399-11e5-8b46-468ec0035c39.png)
 
+### 10. Craft your JQuery Ajax Submission
+
+
+
+
 ## Background Reading
 
-+ http://stackoverflow.com/questions/5119861/record-http-form-posts-via-a-browser
-+ https://hacks.mozilla.org/2013/08/firebug-1-12-new-features/#copyAsCURL
++ Record HTTP Form `POST`: http://stackoverflow.com/questions/5119861/record-http-form-posts-via-a-browser
++ Firefox copy cURL Command: https://hacks.mozilla.org/2013/08/firebug-1-12-new-features/#copyAsCURL
++ Add headers to JQuery Ajax request:
+http://stackoverflow.com/questions/10093053/add-header-in-ajax-request-with-jquery
