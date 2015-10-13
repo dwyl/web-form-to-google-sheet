@@ -28,6 +28,11 @@ Open your ***Google Drive*** and create a new form:
 
 ![01-google-drive-create-form](https://cloud.githubusercontent.com/assets/194400/10529330/d9c59f4a-7394-11e5-9e22-ad92c45553c3.png)
 
+### 2. Click "Get Started"
+
+Skip the Wizard and dive straight into building your form:
+
+![02-gform-wizard-get-started](https://cloud.githubusercontent.com/assets/194400/10529351/1b604270-7395-11e5-8617-92152180e157.png)
 
 
 ```sh
