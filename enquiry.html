@@ -1,0 +1,617 @@
+<style type="text/css">
+    /**
+    * CSS coded to be mobile first. All media
+    * queries are then added by individual component
+    * to adjust for the various break points.
+    **/
+    #landing .ofs-LandingPage__Heading {
+        text-align: center;
+    }
+
+    /**
+    * Background image is applied in two different
+    * ways in order to get desired responsive behavior.
+    * Mobile version: image is contained in
+    * ofs-Heading__BackgroundImage with
+    * ofs-LandingPage__Heading as the parent. Desktop
+    * version: ofs-Heading__BackgroundImage is hidden,
+    * and the image is contained in the ::after element
+    * for ofs-LandingPage__Heading
+    **/
+
+    #landing .ofs-Heading__BackgroundImage {
+        display: block;
+        min-height: 200px;
+        width: 100%;
+        padding-bottom: calc((5/8) * 100%);
+        background-image: url('https://ofs-media-production.s3.amazonaws.com/media-library/landingpage-london-sem.jpg');
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+
+    #landing .ofs-Heading__TextOnBackground {
+        margin: 1.5rem 0;
+    }
+
+    /* Override h1 styles for mobile */
+    #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Title {
+        padding: 0 2.5rem;
+        font-size: 1.625rem;
+        line-height: 2rem;
+    }
+
+    /* Override h2 styles for mobile */
+    #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Subtitle {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    @media screen and (min-width: 641px) {
+        #landing .ofs-LandingPage__Heading {
+            position: relative;
+            min-height: 380px; /* Match height of standard screen width, but don't fix, because we need mobile to expand height to fit */
+            background-color: #2a2730; /* Set a dark background for the image opacity to fade into */
+            z-index: 1;
+        }
+
+        #landing .ofs-LandingPage__Heading::after {
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6; /* Used in conjunction with the element's background-color */
+            background-image: url('https://ofs-media-production.s3.amazonaws.com/media-library/landingpage-london-sem.jpg');
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            -ms-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* vertically and horizontally center group of elements in heading */
+        #landing .ofs-LandingPage__Contents {
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+
+        /* This element is used in the mobile version and must be hidden for larger screens */
+        #landing .ofs-Heading__BackgroundImage {
+            display: none;
+        }
+
+        /* Remove margin since it throws off the vertical centering for parent */
+        #landing .ofs-Heading__TextOnBackground {
+            margin-top: 0;
+        }
+
+        /* Forces the text color to white for text on-top of background images */
+        #landing .ofs-Heading__TextOnBackground h1,
+        #landing .ofs-Heading__TextOnBackground h2,
+        #landing .ofs-Heading__TextOnBackground h3,
+        #landing .ofs-Heading__TextOnBackground h4,
+        #landing .ofs-Heading__TextOnBackground h5,
+        #landing .ofs-Heading__TextOnBackground h6 {
+            color: white;
+        }
+
+        /* Reset h1 & h2 after custom mobile responsiveness */
+        #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Title {
+            margin-bottom: .5rem; /* fix to pull the sub-text closer to the header */
+            padding: 0;
+            font-size: 2.3125rem;
+            line-height: 3rem;
+        }
+        /* Reset h1 & h2 after custom mobile responsiveness */
+        #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Subtitle {
+            width: 430px;
+            font-size: 1.3125rem;
+            line-height: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+
+    #landing .ofs-Heading__SearchBar {
+        padding: 1.5rem;
+        border-radius: 2px;
+        margin: 1rem auto;
+    }
+
+
+
+
+    /* Wrapper for Arrival and Departure fields. This gets modified from screensizes 641-851px */
+    .ofs-Heading__SearchBarColumnWrapper {
+        margin-bottom: 0;
+    }
+
+    /* Eliminate extra spacing between Form and value props */
+    .ofs-Heading__SearchBar .ofs-Form {
+        margin-bottom: 0;
+    }
+
+    /* Aligns all of the search placeholders left */
+    .ofs-Heading__SearchBar .ofs-Form .ofs-Input {
+        text-align: left;
+    }
+
+    /* Fix for inline forms without labels */
+    .ofs-Button--inline {
+        margin-top: 1.5rem;
+    }
+
+    /* Custom grid style for laptop (851px+) */
+    .ofs-Grid__Column--medium-half {
+        width: 100%;
+    }
+
+    /* Custom grid style to always be 50% regardless of screensize */
+    .ofs-Grid__Column--permanent-half {
+        width: 50%;
+    }
+
+    #landing .CallToAction-browse-top{
+        display: none;
+        text-align: right;
+        padding-bottom: 0.5rem;
+        }
+
+     #landing .CallToAction-browse-bottom{
+        display:block;
+        padding-top: 0.5rem;
+        text-align: left;
+     }
+
+
+    @media screen and (min-width: 641px) {
+
+        .ofs-Button--inline {
+        margin-top: 0rem;
+    }
+
+    }
+
+    @media screen and (min-width: 851px) {
+        /* Expand and constrain width slightly so that everything fits inline */
+        #landing .ofs-Heading__SearchBar {
+           width: 750px;
+        }
+
+        /* Remove input field's bottom margins when they're inline */
+        #landing .ofs-Heading__SearchBarColumnWrapper {
+            margin-bottom: 0;
+        }
+
+        /* Custom grid style for laptop (851px+) */
+        #landing .ofs-Grid__Column--medium-half {
+            width: 50%;
+        }
+
+
+    }
+
+    /* Modified homepage styling to make spacing consistent */
+    .about-wrap-container{
+        background-color: #F8F6F1;
+    }
+
+
+    .about-wrap {
+        margin-bottom: 2.5rem;
+    }
+
+    .about-wrap .heading {
+        text-align: center;
+    }
+
+    .about-wrap .values {
+        width: 100%;
+        padding-top: 1rem;
+    }
+
+    .about-wrap .values:after {
+        content: ".";
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both
+    }
+
+    .about-wrap .values__Item {
+        padding: 0 5px;
+        width: 50%;
+    }
+
+    .about-wrap .values--upper {
+        margin-bottom: 2.5rem;
+    }
+
+    .about-wrap .values--upper,
+    .about-wrap .values--lower {
+        padding: 0 5px;
+    }
+
+    .about-wrap .values__Item__Image {
+        display: block;
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 2rem auto;
+    }
+
+    .about-wrap .values__Item__Copy {
+        text-align: center;
+        margin-bottom: 0;
+        padding: 0 1rem;
+    }
+
+    .press-wrap {
+        border-top: 1px solid #cdcdd1;
+        border-bottom: 1px solid #cdcdd1;
+        display: block;
+        margin-bottom: 2.5rem;
+    }
+
+
+
+    @media only screen and (min-width:641px) {
+        .about-wrap .values--upper,
+        .about-wrap .values--lower {
+            width: 50%;
+            float: left;
+            margin-bottom: 0;
+        }
+
+
+
+    }
+
+    @media only screen and (min-width:1025px) {
+        .about-wrap .values__Item {
+            padding: 0 40px;
+        }
+    }
+
+    .browse-homes{
+        color: white;
+        background-color: #2A2730;
+    }
+
+    /*Video container*/
+
+    .video-container{
+        width: 500px;
+        height: 281px;
+    }
+
+    @media only screen and (max-width: 500px){
+        .video-container{
+            width: 282px;
+            height: 158px;
+        }
+    }
+
+    .heading{
+        text-align: center;
+    }
+
+    .search-bar{
+        padding: 1.5rem 0;
+        background-color: #F6F7F9;
+    }
+
+    .search-cta{
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .sleep-selector{
+        padding-bottom: 1.5rem;
+    }
+
+    .section{
+        margin: 2rem 0;
+    }
+
+</style>
+
+<div id="landing" a name="landing">
+
+    <div class="ofs-LandingPage__Heading">
+        <div class="ofs-LandingPage__Contents">
+            <div class="ofs-Heading__TextOnBackground">
+                <h1 class="ofs-LandingPage__Title">Enjoy the city on your doorstep with onefinestay </h1>
+                <h2 class="ofs-LandingPage__Subtitle">This fall, stay in a London home chosen for space, character and comfort.</h2>
+            </div>
+            <!-- only visible on mobile -->
+            <div class="ofs-Heading__BackgroundImage" id="LONDON_BG"></div>
+        </div>
+    </div>
+
+
+    <div class="ofs-Container">
+        <div class="ofs-Container__Content">
+            <div class="ofs-EditorialGrid section">
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half">
+                    <h2>Fall for London</h2>
+                    <p>Fall – it’s the best time of year for a romantic getaway to London.</p>
+                    <ul class="ofs-List ofs-List--bullets">
+                        <li class="ofs-List__Item">Summer tourists have departed, and kids are back in school.</li>
+                        <li class="ofs-List__Item">It's still warm enough to explore parks and markets.</li>
+                        <li class="ofs-List__Item">Enjoy prices up to 30% cheaper than peak season.</li>
+                        <li class="ofs-List__Item">Great for culture, from Frieze Art Fair to West End shows.</li>
+                    </ul>
+                </div>
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half">
+                    <div class="ofs-Grid search-cta">
+                        <h2>Find a London home</h2>
+                        <p>Enter your dates to find available homes in London's best neighbourhoods.</p>
+                    </div>
+                    <form class="ofs-Form" id="gform">
+                        <input type="hidden" name="city" value="LON">
+                        <div class="ofs-grid">
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <div data-ofs-component="newDatepicker" data-name="start_date" data-placeholder="Arrival"></div>
+                            </div>
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <div data-ofs-component="newDatepicker" data-name="end_date" data-placeholder="Departure"></div>
+                            </div>
+                        </div>
+                        <div class="ofs-grid">
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <select name="sleeps" data-ofs-component="simpleChoice">
+                                    <option value="">Guests</option>
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
+                                    <option value=5>5</option>
+                                    <option value=6>6</option>
+                                    <option value=7>7</option>
+                                    <option value=8>8</option>
+                                    <option value=9>9</option>
+                                </select>
+                            </div>
+                            <div class="ofs-grid">
+                             <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                  <div class="ofs-Form__Field">
+                                  <p class="ofs-Form__Label" id="email-label"></p> <!--spacer-->
+                                  <input required name="email" id="email" type="email" placeholder="email address"></input>
+                                  <span id="email-invalid" class="rf-Message">Must be a valid email address</span>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <button class="ofs-Button ofs-Button--small ofs-Button--full-width ofs-Button--inline">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ofs-Container">
+        <div class="ofs-Container__Content ofs-ContentSection__Content">
+            <div class="section">
+                <h2>What sets us apart</h2>
+                <p>We give you a new way to experience London’s most interesting neighbourhoods – by staying in the finest private homes, chosen for space, character and comfort. So you can have everything on your very own doorstep, in the heart of the city.</p><p>We know what counts when you’re travelling – a friendly face to meet you, beds made with pristine sheets, the towels and toiletries taken care of to our exacting standards. And we know that your leisure time is a canvas—you want space and freedom to create your own experiences. So we’re available around the clock if you need us, but we step back when you don’t.</p>
+                <a class="ofs-Button" href="../search/?city=108&page=1&region=108">Browse homes</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ofs-Container">
+        <div class="ofs-Container__Content ofs-ContentSection__Content">
+            <div class="ofs-EditorialGrid section">
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half">
+                    <h2>Kensington Gardens, Kensington</h2>
+                    <p>Between September and November London’s green parks bronze
+                     and brown, becoming less busy and more charming by the day. One of our favourites is Kensington Gardens, on the west side of Hyde Park. From here, fantastic shopping on Kensington High Street and art exhibits at the Serpentine Gallery are less than 15 minutes’ walk. But who wants to be indoors? A pedalo for two looks much more appealing. </p>
+                    <a class="ofs-Button" href="../search/?city=108&page=1&region=344">Browse Kensington homes</a>
+                </div>
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half video-container">
+                    <iframe src="https://player.vimeo.com/video/140303132" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ofs-Container">
+        <div class="ofs-Container__Content ofs-ContentSection__Content">
+            <div class="ofs-EditorialGrid section">
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half">
+                    <h2>Burlington Arcade, Mayfair</h2>
+                    <p>London’s arcades are part of the city’s architectural heritage, and Mayfair’s Burlington Arcade is a gem dating back to 1819. Today it’s still looked after by Beadles in traditional uniform, and as well as fashion boutiques, jewellers and beauty shops, it’s home to Truefitt&Hill – a 200-year old gentlemen’s barber (what a good pit-stop for a certain someone who’s run out of shoe shopping stamina).</p>
+                    <a class="ofs-Button" href="../search/?city=108&page=1&region=190">Browse Mayfair homes</a>
+                </div>
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half video-container">
+                    <iframe src="https://player.vimeo.com/video/140302519" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ofs-Container">
+        <div class="ofs-Container__Content ofs-ContentSection__Content">
+            <div class="ofs-EditorialGrid section">
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half">
+                    <h2>Borough Market, London Bridge</h2>
+                    <p>Borough Market is London’s oldest fruit and veg market, but that doesn’t begin to describe the vibrant variety of tastes, scents and sights within. Vendors serve up hot specialities from around the world all week, and the full market is open Wednesday to Saturday. Pop down for lunch before exploring the historic neighbourhood, or shop for organic groceries, traditionally hung game and a fine vintage to take home for dinner. </p>
+                    <a class="ofs-Button" href="/../search/?city=108&page=1&region=299">Browse London Bridge homes</a>
+                </div>
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half video-container">
+                    <iframe src="https://player.vimeo.com/video/140302814" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ofs-Container">
+        <div class="ofs-Container__Content ofs-ContentSection__Content">
+            <div class="ofs-EditorialGrid section">
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half">
+                    <h2>Prince Bonaparte, Notting Hill</h2>
+                    <p>As the days get shorter, London’s pubs get fuller---and it’s no wonder why. With a cosy, convivial atmosphere, seasonal menus and a wide selection of ales and wines, The Prince Bonaparte in Notting Hill has perfected the British gastropub formula. Stop in for lunch before visiting Portobello Market -- Notting Hill’s main attraction -- we wouldn’t be surprised if you’re tempted back in on the way home.</p>
+                    <a class="ofs-Button" href="../search/?city=108&page=1&region=350">Browse Notting Hill homes</a>
+                </div>
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half video-container">
+                    <iframe src="https://player.vimeo.com/video/140303780" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <div class="ofs-Container search-bar">
+        <div class="ofs-Container__Content">
+            <div class="ofs-Heading__SearchBar">
+                <div class="ofs-Grid search-cta">
+                    <p>Enter dates to search for available homes</p>
+                </div>
+                <form class="ofs-Form" action="/search/" method="GET">
+                    <input type="hidden" name="city" value="108">
+                    <div class="ofs-Grid">
+                        <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                            <div class="ofs-Heading__SearchBarColumnWrapper">
+                                <div class="ofs-Grid">
+                                    <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                        <div data-ofs-component="newDatepicker" data-name="start_date" data-placeholder="Arrival"></div>
+                                    </div>
+                                    <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                        <div data-ofs-component="newDatepicker" data-name="end_date" data-placeholder="Departure"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                            <div class="ofs-Heading__SearchBarColumnWrapper">
+                                <div class="ofs-Grid">
+                                    <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                        <select name="sleeps" data-ofs-component="simpleChoice">
+                                            <option value="">Guests</option>
+                                            <option value=1>1</option>
+                                            <option value=2>2</option>
+                                            <option value=3>3</option>
+                                            <option value=4>4</option>
+                                            <option value=5>5</option>
+                                            <option value=6>6</option>
+                                            <option value=7>7</option>
+                                            <option value=8>8</option>
+                                            <option value=9>9</option>
+                                        </select>
+                                     </div>
+                                    <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                        <button class="ofs-Button ofs-Button--small ofs-Button--full-width ofs-Button--inline">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+  </div>
+
+
+
+</div>
+
+<!-- Form submission handler to GoogleDocs -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script data-cfasync="false" type="text/javascript">
+    // Requested by Naza ... See: http://stackoverflow.com/a/46181
+    function validateEmail(email) {
+      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      return re.test(email);
+    }
+
+    jQuery( document ).ready(function( $ ) {
+        // variable to hold request
+        var request;
+        // bind to the submit event of our form
+        $("#gform").submit(function(event){
+
+            // prevent default posting of form
+            event.preventDefault();
+
+            var email = $('#email').val();
+            console.log(' >> '+ email);
+            if(!validateEmail(email)) {
+              $('#email-invalid').show();
+              return false;
+            }
+            // abort any pending request
+            if (request) {
+                request.abort();
+            }
+            // setup some local variables
+            var $form = $(this);
+            // let's select and cache all the fields
+            var $inputs = $form.find("input, select, button, textarea");
+            // serialize the data in the form
+            var serializedData = $form.serialize();
+
+            // let's disable the inputs for the duration of the ajax request
+            // Note: we disable elements AFTER the form data has been serialized.
+            // Disabled form elements will not be serialized.
+            $inputs.prop("disabled", true);
+            $('#result').text('Sending data...');
+
+            // fire off the request to /form.php
+            request = $.ajax({
+              url: "https://script.google.com/macros/s/AKfycbxhWEqtp4LejDhNBgr8hsaDyO6qDu4LgRBY6jZkWD3-bBvMsVge/exec",
+              type: "post",
+              data: serializedData
+            });
+
+            // callback handler that will be called on success
+            request.done(function (response, textStatus, jqXHR){
+              $('#gform').html('<h2>Thanks! We will contact you soon!</h2>');
+            });
+
+            // callback handler that will be called on failure
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                // log the error to the console
+                console.error(
+                    "The following error occured: "+
+                    textStatus, errorThrown
+                );
+            });
+
+            // callback handler that will be called regardless
+            // if the request failed or succeeded
+            request.always(function () {
+                // reenable the inputs
+                $inputs.prop("disabled", false);
+            });
+
+        });
+    });
+    </script>
+    <!-- for some reason these styles don't get applied when they are included at the top!! -->
+    <style>
+    .rf-Message { display:block;color:#d80033;font-size:.875rem;line-height:1rem;}
+    #email-invalid { display: none; }
+    </style>

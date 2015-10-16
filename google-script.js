@@ -1,5 +1,6 @@
+// Usage
 //  1. Enter sheet name where data is to be written below
-        var SHEET_NAME = "Sheet1";
+        var SHEET_NAME = "PAR";
 
 //  2. Run > setup
 //
@@ -14,9 +15,9 @@
 var SCRIPT_PROP = PropertiesService.getScriptProperties(); // new property service
 
 // If you don't want to expose either GET or POST methods you can comment out the appropriate function
-// function doGet(e){
-//   return handleResponse(e);
-// }
+function doGet(e){
+  return handleResponse(e);
+}
 
 function doPost(e){
   return handleResponse(e);
@@ -31,6 +32,12 @@ function handleResponse(e) {
   lock.waitLock(30000);  // wait 30 seconds before conceding defeat.
 
   try {
+
+MailApp.sendEmail("contact.nelsonic@gmail.com",
+                   // "contact.nelsonic@gmail.com",
+                   "New Mobile SEM Enquiry - " + new Date(),
+                   "Please Check the Google Spreadsheet");
+//    MailApp.sendEmail("contact.nelsonic@gmail.com", "contact.nelsonic@gmail.com", "New Mobile SEM Enqiry", "Please Check the Google Spreadsheet for details!");
     // next set where we write the data - you could write to multiple/alternate destinations
     var doc = SpreadsheetApp.openById(SCRIPT_PROP.getProperty("key"));
     var sheet = doc.getSheetByName(SHEET_NAME);
