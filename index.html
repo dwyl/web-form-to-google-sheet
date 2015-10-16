@@ -9,20 +9,30 @@
 <title>Untitled Document</title>
 </head>
 <body>
-<form id="foo">
-<p><label for="name">Name:</label>
-<input id="name" name="name" type="text" value=""/></p>
-<p><label for="comment">Comment:</label><br/>
-<textarea id="comment" name="comment" cols="40"></textarea></p>
+<form id="gform">
+
+<p><label for="checkin">Checkin Date</label>
+<input id="checkin" name="checkin" type="date" value=""/></p>
+
+<p><label for="checkout">Checkout Date</label>
+<input id="checkout" name="checkout" type="date" value=""/></p>
+
+<p><label for="email">Email:</label>
+<input id="email" name="email" type="text" value=""/></p>
+
+<p><label for="guests">Number of Guests:</label>
+<input id="guests" name="guests" type="text" value=""/></p>
+
 <p id="result"></p>
 <input type="submit" value="Send"/>
+
 </form>
 <script data-cfasync="false" type="text/javascript">
 jQuery( document ).ready(function( $ ) {
 	// variable to hold request
 	var request;
 	// bind to the submit event of our form
-	$("#foo").submit(function(event){
+	$("#gform").submit(function(event){
 		// abort any pending request
 		if (request) {
 			request.abort();
@@ -42,7 +52,7 @@ jQuery( document ).ready(function( $ ) {
 
 		// fire off the request to /form.php
 		request = $.ajax({
-      url: "https://script.google.com/macros/s/AKfycby2i5t13ccSQ9e-atuknlnPDbqKplF2QUVFiWIX_wnEPD34GM0/exec", 
+      url: "https://script.google.com/macros/s/AKfycbxhWEqtp4LejDhNBgr8hsaDyO6qDu4LgRBY6jZkWD3-bBvMsVge/exec",
 			type: "post",
 			data: serializedData
 		});

@@ -225,6 +225,49 @@ Back in the spreadsheet, confirm that the row was inserted:
 ![12 14-confirm-the-form-sumits](https://cloud.githubusercontent.com/assets/194400/10541065/da754fa0-7405-11e5-86d4-f0eabc66d962.png)
 
 
+## Customise!!
+
+### 12.15 Customise the Fields as Required
+
+![custom fields](https://cloud.githubusercontent.com/assets/194400/10541119/64003b86-7406-11e5-9392-c5ee86af89ad.png)
+
+```html
+<form id="gform">
+
+  <p><label for="checkin">Checkin Date</label>
+  <input id="checkin" name="checkin" type="date" value=""/></p>
+
+  <p><label for="checkout">Checkout Date</label>
+  <input id="checkout" name="checkout" type="date" value=""/></p>
+
+  <p><label for="email">Email:</label>
+  <input id="email" name="email" type="text" value=""/></p>
+
+  <p><label for="guests">Number of Guests:</label>
+  <input id="guests" name="guests" type="text" value=""/></p>
+
+  <p id="result"></p>
+  <input type="submit" value="Send"/>
+
+</form>
+```
+
+### 12.6 Submit the Form with the Custom Fields
+
+Save `index.html` and *open* it in your browser:
+
+![12 16-totes-worked](https://cloud.githubusercontent.com/assets/194400/10541310/d108f87a-7407-11e5-9370-cdbb6efa520c.png)
+
+Submit the form with some sample data!
+
+### 12.7 Confirm that it inserted a new Row in the Spreadsheet
+
+Back in your Google Sheet, confirm that the row was inserted:
+
+![12 17-new-row-in-spreadsheet](https://cloud.githubusercontent.com/assets/194400/10541367/5d5bf82c-7408-11e5-9abd-7236dd8423cd.png)
+
+
+
 ## Background Reading
 
 + Record HTTP Form `POST`: http://stackoverflow.com/questions/5119861/record-http-form-posts-via-a-browser
