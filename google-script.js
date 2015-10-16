@@ -23,20 +23,29 @@ function doPost(e){
   return handleResponse(e);
 }
 
+function sendEmail(){
+
+  MailApp.sendEmail("contact.nelsonic@gmail.com",
+                   // "contact.nelsonic@gmail.com",
+                   "New Mobile SEM Enquiry ",
+                   "Please Check the Google Spreadsheet");
+
+  GmailApp.sendEmail("contact.nelsonic@gmail.com", // end
+                   // "contact.nelsonic@gmail.com",
+                   "GMAIL New Mobile SEM Enquiry",
+                   "Please Check the Google Spreadsheet");
+}
+
 function handleResponse(e) {
-  // shortly after my original solution Google announced the LockService[1]
-  // this prevents concurrent access overwritting data
-  // [1] http://googleappsdeveloper.blogspot.co.uk/2011/10/concurrency-and-google-apps-script.html
+
+  sendEmail();
+
   // we want a public lock, one that locks for all invocations
   var lock = LockService.getPublicLock();
   lock.waitLock(30000);  // wait 30 seconds before conceding defeat.
 
   try {
 
-MailApp.sendEmail("contact.nelsonic@gmail.com",
-                   // "contact.nelsonic@gmail.com",
-                   "New Mobile SEM Enquiry - " + new Date(),
-                   "Please Check the Google Spreadsheet");
 //    MailApp.sendEmail("contact.nelsonic@gmail.com", "contact.nelsonic@gmail.com", "New Mobile SEM Enqiry", "Please Check the Google Spreadsheet for details!");
     // next set where we write the data - you could write to multiple/alternate destinations
     var doc = SpreadsheetApp.openById(SCRIPT_PROP.getProperty("key"));
