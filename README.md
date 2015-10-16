@@ -266,6 +266,10 @@ Back in your Google Sheet, confirm that the row was inserted:
 
 ![12 17-new-row-in-spreadsheet](https://cloud.githubusercontent.com/assets/194400/10541367/5d5bf82c-7408-11e5-9abd-7236dd8423cd.png)
 
+## Customize the Presentation
+
+Grab the HTML from the *existing* page
+
 
 
 ## Background Reading
