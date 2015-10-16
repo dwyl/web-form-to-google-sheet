@@ -100,8 +100,20 @@ and hit the enter key:
 
 ![09-curl-response-in-terminal](https://cloud.githubusercontent.com/assets/194400/10529836/40e63c4e-7399-11e5-8b46-468ec0035c39.png)
 
-### 10. Craft your JQuery Ajax Submission
+## The *Fun* Part ...
 
+### 10. Craft your HTML Form with JQuery Ajax Submission
+
+built a basic HTML form with the same fields as the Google Form:
+
+![html form](https://cloud.githubusercontent.com/assets/194400/10537810/380648f0-73ec-11e5-96c6-26b62145dbe3.png)
+
+tried to submit the form using ***JQuery Ajax*** *directly* to
+google but this was rejected because of CORS...
+
+![Ajax Form Submission Blocked by CORS](https://cloud.githubusercontent.com/assets/194400/10537624/0d9fa076-73eb-11e5-9532-d3b4d52fd1d5.png)
+
+We can either attempt to get JQuery to set the correct headers for this or... 
 
 
 

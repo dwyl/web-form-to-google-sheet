@@ -41,7 +41,7 @@
     <h4>Please <em>Complete</em> this Fabulous Form!</h4>
     <br>
 
-    <form class="form-horizontal" id="gform">
+    <form class="form-horizontal" id="gform" method="POST">
 
       <div class="form-group">
         <label for="name" class="col-sm-2 control-label">
@@ -60,7 +60,7 @@
         </label>
         <div class="col-sm-10">
           <input class="form-control" required
-          id="age" name="age" placeholder="Something hard to guess" value="">
+          id="age" name="age" placeholder="Number of Years you've been alive" value="">
         </div>
       </div>
 
@@ -89,9 +89,46 @@
   $(function() {
     $('#gform').submit(function(e){
        e.preventDefault();
-       console.log('Hello!')
+       var name = $('#name').val();
+       var age = $('#age').val();
+       var gender = $('input[name=optionsRadios]:checked', '#gform').val()
+       console.log(name, age, gender)
+       submit();
     })
+
+    // var headers = {
+    //
+    // }
+    var url = 'https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/formResponse';
+
+    function submit(values) {
+      $.ajax({
+        type:"POST",
+        dataType: "xml",
+        // beforeSend: function (request) {
+        //     request.setRequestHeader('Referer', 'https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/viewform?fbzx=-4417037870062614176');
+        // },
+        // xhrFields: {
+        //    withCredentials: true
+        // },
+        url: url,
+        // crossDomain: true,
+        data: {
+          "entry.507774908" : 23,
+          "entry.241430440" : 'tesa',
+          "entry.335159234" : "Female"
+        },
+        processData: false,
+        success: function(msg) {
+          console.log(msg);
+            // $("#results").append("The result =" + StringifyPretty(msg));
+        }
+      });
+    }
+
   });
 </script>
+
+<!-- <iframe src="https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe> -->
 
 </body>
