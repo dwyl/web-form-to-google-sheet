@@ -117,10 +117,48 @@ We can either attempt to get JQuery to set the correct headers for this or...
 
 ### 11. Use an *iFrame* ?
 
-Still have the same CORS issue...
+Still have the same CORS issue ... need to *re-think* this.
 
-### 12. Google Apps Script
+## 12. Google Apps *Script*
 
+### 12.1 Open & Make a Copy of the Sample Spreadsheet
+
+Open the Sample Google Spreasheet (*Ensure you are signed into your Google Account*)
+
+> https://docs.google.com/spreadsheets/d/10tt64TiALYhPMqR2fh9JzkuhxW7oC0rXXPb_pmJ7HAY
+
+![12-gscript-make-a-copy](https://cloud.githubusercontent.com/assets/194400/10540271/75e1df1a-73fe-11e5-8304-2492683e1394.png)
+
+### 12.2 Open the Script Editor
+
+Once you have made the copy, open the ***Script Editor***
+so you can edit the App Script
+
+![12 2-open-the-script-editor](https://cloud.githubusercontent.com/assets/194400/10540508/885f8dac-7400-11e5-9557-ae4c436df343.png)
+
+### 12.3 Publish as a Web App
+
+Without modifying the sample script, Publish it!
+
+![12 3-publish-as-web-app](https://cloud.githubusercontent.com/assets/194400/10540579/1b275cb4-7401-11e5-894c-f49ad7fa2591.png)
+
+### 12.4 Deploy the Script as a *Web App*
+
+Deploy the script as a "Web App"
+
+![12 4-deploy-as-web-app](https://cloud.githubusercontent.com/assets/194400/10540599/51e2216c-7401-11e5-8c44-7351c129eb9d.png)
+
+### 12.5 Authorize the App for your Google Account
+
+*Authorize* the script to access your Google Drive
+
+![12 5-authorise-to-run](https://cloud.githubusercontent.com/assets/194400/10540651/da345ed6-7401-11e5-896c-e7549581584c.png)
+
+### 12.6 Copy the URL of your newly deployed App
+
+You will need the url for step {X} below...
+
+![12 6-copy-the-url](https://cloud.githubusercontent.com/assets/194400/10540687/37ac709e-7402-11e5-92e9-123ec1a727b3.png)
 
 
 ## Background Reading
