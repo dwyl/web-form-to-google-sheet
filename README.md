@@ -113,8 +113,11 @@ google but this was rejected because of CORS...
 
 ![Ajax Form Submission Blocked by CORS](https://cloud.githubusercontent.com/assets/194400/10537624/0d9fa076-73eb-11e5-9532-d3b4d52fd1d5.png)
 
-We can either attempt to get JQuery to set the correct headers for this or... 
+We can either attempt to get JQuery to set the correct headers for this or...
 
+### 11. Use an *iFrame* ?
+
+Still have the same CORS issue...
 
 
 ## Background Reading
@@ -123,3 +126,8 @@ We can either attempt to get JQuery to set the correct headers for this or...
 + Firefox copy cURL Command: https://hacks.mozilla.org/2013/08/firebug-1-12-new-features/#copyAsCURL
 + Add headers to JQuery Ajax request:
 http://stackoverflow.com/questions/10093053/add-header-in-ajax-request-with-jquery
++ AJAX post to google spreadsheet: http://stackoverflow.com/questions/10000020/ajax-post-to-google-spreadsheet which points to:
+  + https://mashe.hawksey.info/2011/10/google-spreadsheets-as-a-database-insert-with-apps-script-form-postget-submit-method/
++ MailApp Service: https://developers.google.com/apps-script/reference/mail/mail-app
++ CORS info: http://stackoverflow.com/questions/24371734/firefox-cors-request-giving-cross-origin-request-blocked-despite-headers
++ CORS is is *meant* to block this... http://stackoverflow.com/questions/23607901/cross-origin-request-blocked-on
