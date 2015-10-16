@@ -1,151 +1,81 @@
-<!DOCTYPE html>
-<html lang=”en-GB”>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Google Form with Style!</title>
-  <link rel="shortcut icon" href="http://www.onefinestay.com/favicon.ico?v=rMwoggB5b2" type="image/x-icon">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
-  crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<script data-cfasync="false" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<title>Untitled Document</title>
 </head>
+<body>
+<form id="foo">
+<p><label for="name">Name:</label>
+<input id="name" name="name" type="text" value=""/></p>
+<p><label for="comment">Comment:</label><br/>
+<textarea id="comment" name="comment" cols="40"></textarea></p>
+<p id="result"></p>
+<input type="submit" value="Send"/>
+</form>
+<script data-cfasync="false" type="text/javascript">
+jQuery( document ).ready(function( $ ) {
+	// variable to hold request
+	var request;
+	// bind to the submit event of our form
+	$("#foo").submit(function(event){
+		// abort any pending request
+		if (request) {
+			request.abort();
+		}
+		// setup some local variables
+		var $form = $(this);
+		// let's select and cache all the fields
+		var $inputs = $form.find("input, select, button, textarea");
+		// serialize the data in the form
+		var serializedData = $form.serialize();
 
-<body class='center'>
-  <style>
-    body {
-      margin-top:0.3em
-    }
-    .center {
-      margin: auto;
-      width: 90%;
-      padding: 10px;
-    }
-    .form-control {
-      font-size: 1.5em;
-      height: 1.8em;
-    }
-    .input-error {
-      border: #ffcdd2 solid 3px;
-      background-color: #ffebee;
-    }
-    .help-block {
-      font-size: 1em;
-      color: #e74c3c;
-    }
-    .required-field {
-      color: red;
-      font-size: 1.3em;
-    }
-  </style>
+		// let's disable the inputs for the duration of the ajax request
+		// Note: we disable elements AFTER the form data has been serialized.
+		// Disabled form elements will not be serialized.
+		$inputs.prop("disabled", true);
+		$('#result').text('Sending data...');
 
-    <h3>Welcome to ACME Co!</h3>
-    <h4>Please <em>Complete</em> this Fabulous Form!</h4>
-    <br>
+		// fire off the request to /form.php
+		request = $.ajax({
+			// url: "https://script.google.com/macros/s/AKfycbzV--xTooSkBLufMs4AnrCTdwZxVNtycTE4JNtaCze2UijXAg8/exec", // works
+      url: "https://script.google.com/macros/s/AKfycbwHyDcY2sMFzoUPYCHVnqrzNyZOhlI4yuf2vYIFX1MXEVGixhX5/exec",  // clone
+			type: "post",
+			data: serializedData
+		});
 
-    <form class="form-horizontal" id="gform" method="POST">
+		// callback handler that will be called on success
+		request.done(function (response, textStatus, jqXHR){
+			// log a message to the console
+      console.log(response, textStatus, jqXHR);
+			$('#result').html('<a href="https://docs.google.com/spreadsheets/d/10tt64TiALYhPMqR2fh9JzkuhxW7oC0rXXPb_pmJ7HAY/edit?usp=sharing" target="_blank">Success - see Google Sheet</a>');
+			console.log("Hooray, it worked!");
+		});
 
-      <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">
-          Name <span class="required-field">*</span>
-        </label>
-        <div class="col-sm-10">
-          <input class="form-control" required
-          id="name" name="name" placeholder="Your Name">
-        </div>
-      </div>
+		// callback handler that will be called on failure
+		request.fail(function (jqXHR, textStatus, errorThrown){
+			// log the error to the console
+			console.error(
+				"The following error occured: "+
+				textStatus, errorThrown
+			);
+		});
 
-      <div class="form-group">
-        <label for="age" class="col-sm-2 control-label">
-          Age <span class="required-field">*</span>
-          <span class='help-block'></span>
-        </label>
-        <div class="col-sm-10">
-          <input class="form-control" required
-          id="age" name="age" placeholder="Number of Years you've been alive" value="">
-        </div>
-      </div>
+		// callback handler that will be called regardless
+		// if the request failed or succeeded
+		request.always(function () {
+			// reenable the inputs
+			$inputs.prop("disabled", false);
+		});
 
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="genderF" value="Female" checked>
-          Female
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="genderM" value="Male">
-          Male
-        </label>
-      </div>
-
-      <div class="form-group pull-right">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn-success btn btn-lg">Submit</button>
-        </div>
-      </div>
-    </form>
-
-<iframe id="iframe" src="https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0"></iframe>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript">
-  $(function() {
-
-// https://script.google.com/macros/s/AKfycbzrhK6Zm_hFNZEPo3feigRrgns13tWGrWT6f8d1iXWx_RZB6lY/exec
-      request = $.ajax({
-          url: "/form.php",
-          type: "post",
-          data: serializedData
-      });
-
-      // Callback handler that will be called on success
-      request.done(function (response, textStatus, jqXHR){
-          // Log a message to the console
-          console.log("Hooray, it worked!");
-      });
-
-    $('#gform').submit(function(e){
-       e.preventDefault();
-       var name = $('#name').val();
-       var age = $('#age').val();
-       var gender = $('input[name=optionsRadios]:checked', '#gform').val()
-       console.log(name, age, gender)
-       submit();
-    })
-
-    // var headers = {
-    //
-    // }
-    var url = 'https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/formResponse';
-
-    // var frames = window.frames || window.document.frames;
-    // var iframe = frames["iframe"].window.document.body;
-    // console.log(frames);
-    function submit(values) {
-      $.ajax({
-        type:"POST",
-        dataType: "xml",
-        // beforeSend: function (request) {
-        //     request.setRequestHeader('Referer', 'https://docs.google.com/forms/d/1qwGbbUAT1yPZ-yVqXzIg8h0PGW281srrkBtCdJwFgdA/viewform?fbzx=-4417037870062614176');
-        // },
-        // xhrFields: {
-        //    withCredentials: true
-        // },
-        url: url,
-        // crossDomain: true,
-        data: {
-          "entry.507774908" : 23,
-          "entry.241430440" : 'tesa',
-          "entry.335159234" : "Female"
-        },
-        processData: false,
-        success: function(msg) {
-          console.log(msg);
-            // $("#results").append("The result =" + StringifyPretty(msg));
-        }
-      });
-    }
-
-  });
+		// prevent default posting of form
+		event.preventDefault();
+	});
+});
 </script>
-
 </body>
+</html>

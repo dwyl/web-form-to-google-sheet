@@ -119,6 +119,9 @@ We can either attempt to get JQuery to set the correct headers for this or...
 
 Still have the same CORS issue...
 
+### 12. Google Apps Script
+
+
 
 ## Background Reading
 
