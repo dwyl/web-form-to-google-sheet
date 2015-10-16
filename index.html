@@ -42,8 +42,7 @@ jQuery( document ).ready(function( $ ) {
 
 		// fire off the request to /form.php
 		request = $.ajax({
-			// url: "https://script.google.com/macros/s/AKfycbzV--xTooSkBLufMs4AnrCTdwZxVNtycTE4JNtaCze2UijXAg8/exec", // works
-      url: "https://script.google.com/macros/s/AKfycbwHyDcY2sMFzoUPYCHVnqrzNyZOhlI4yuf2vYIFX1MXEVGixhX5/exec",  // clone
+      url: "https://script.google.com/macros/s/AKfycby2i5t13ccSQ9e-atuknlnPDbqKplF2QUVFiWIX_wnEPD34GM0/exec", 
 			type: "post",
 			data: serializedData
 		});
@@ -52,7 +51,7 @@ jQuery( document ).ready(function( $ ) {
 		request.done(function (response, textStatus, jqXHR){
 			// log a message to the console
       console.log(response, textStatus, jqXHR);
-			$('#result').html('<a href="https://docs.google.com/spreadsheets/d/10tt64TiALYhPMqR2fh9JzkuhxW7oC0rXXPb_pmJ7HAY/edit?usp=sharing" target="_blank">Success - see Google Sheet</a>');
+			$('#result').html('<a href="https://docs.google.com/spreadsheets/d/1_x8LtTVzlPW4hRWfJ7LHwoPUrTt2mJT6o_CMLu9BlU8/edit?usp=sharing" target="_blank">Success - see Google Sheet</a>');
 			console.log("Hooray, it worked!");
 		});
 

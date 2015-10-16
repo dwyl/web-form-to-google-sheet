@@ -160,6 +160,70 @@ You will need the url for step {X} below...
 
 ![12 6-copy-the-url](https://cloud.githubusercontent.com/assets/194400/10540687/37ac709e-7402-11e5-92e9-123ec1a727b3.png)
 
+I my case the url is:
+```js
+https://script.google.com/macros/s/AKfycby2i5t13ccSQ9e-atuknlnPDbqKplF2QUVFiWIX_wnEPD34GM0/exec
+```
+But your *will* be different.
+
+### 12.7 Run the Setup Script
+
+The Setup Script gets the Name of your associated Google Spreadsheet
+so it knows where to put the data...
+
+![12 7-run-setup-function](https://cloud.githubusercontent.com/assets/194400/10540765/e5da721a-7402-11e5-822a-0589c713cb47.png)
+
+### 12.8 Re-Publish ...
+
+Once you have run the Setup Script, *test* that it worked.
+
+![12 8-test-your-code](https://cloud.githubusercontent.com/assets/194400/10540852/cc7f7170-7403-11e5-92e9-1d4a417dbf9b.png)
+
+### 12.9 Test Success
+
+Clicking that link will open a new page with a `JSON` result:
+
+![12 8-success](https://cloud.githubusercontent.com/assets/194400/10540902/3baff970-7404-11e5-9c6b-36b886ea6fa2.png)
+
+### 12.10 Confirm the Row was Inserted
+
+Back in your spreadsheet, confirm that the row was inserted:
+
+![12 9-confirm-row-4-was-inserted](https://cloud.githubusercontent.com/assets/194400/10540913/6600b5de-7404-11e5-870d-582be240da8e.png)
+
+## HTML Form
+
+> *Now the fun part...*
+
+Copy the code from this [**index.html**](https://github.com/nelsonic/web-form-to-google-sheet/blob/6ed85d975a4d58ecd4731e71a288802952dfed38/index.html) and paste it into your own `index.html`
+
+### 12.12 Update the Script URL
+
+Find the line in that defines the "ajax" request:
+
+```js
+request = $.ajax({
+  url: "https://script.google.com/macros/s/AKfycby2i5t13ccSQ9e-atuknlnPDbqKplF2QUVFiWIX_wnEPD34GM0/exec",
+  type: "post",
+  data: serializedData
+});
+```
+And update it to be the url for *your* "App" which you copied in step 12.6 above!
+
+Save and open the form in your web browser.
+
+### 12.13 Submit the Form!
+
+Enter some data and submit the form!
+
+![12 13-submit-the-form](https://cloud.githubusercontent.com/assets/194400/10541023/8c80a4fc-7405-11e5-87d7-9b818ebdf0e6.png)
+
+### 12.14 Confirm the Data you Submitted was Inserted in the Spreadsheet
+
+Back in the spreadsheet, confirm that the row was inserted:
+
+![12 14-confirm-the-form-sumits](https://cloud.githubusercontent.com/assets/194400/10541065/da754fa0-7405-11e5-86d4-f0eabc66d962.png)
+
 
 ## Background Reading
 
