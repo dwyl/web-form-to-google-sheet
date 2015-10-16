@@ -1,0 +1,22 @@
+{
+  "name": "web-form-to-google-sheet",
+  "version": "1.0.0",
+  "description": "post form directly to google spreadsheet without server",
+  "main": "email.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nelsonic/web-form-to-google-sheet.git"
+  },
+  "author": "this guy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nelsonic/web-form-to-google-sheet/issues"
+  },
+  "homepage": "https://github.com/nelsonic/web-form-to-google-sheet#readme",
+  "dependencies": {
+    "nodemailer": "^1.8.0"
+  }
+}

@@ -270,7 +270,11 @@ Back in your Google Sheet, confirm that the row was inserted:
 
 Grab the HTML from the *existing* page
 
+## Email
 
+Posted this OverFlow Question because I cannot get `MailApp.sendEmail`
+to work:
+http://stackoverflow.com/questions/33180172/why-does-mailapp-sendemail-from-google-spreadsheet-script-not-work
 
 ## Background Reading
 
