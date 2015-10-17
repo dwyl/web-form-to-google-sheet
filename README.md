@@ -199,7 +199,7 @@ will need to "***Save a New Version***" and ***(Re-)Deploy your App***! (*simply
 
 ### 19. Save a *New Version* of your Script
 
-It's not immediately *obivous* but you have to *click* on "*Manage Versions...*"
+It's not immediately *obvious* but you have to *click* on "*Manage Versions...*"
 
 ![19 google-script-no-save-new-version](https://cloud.githubusercontent.com/assets/194400/10558249/527f3c98-74c1-11e5-8290-5af7fa7f5f75.png)
 

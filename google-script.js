@@ -25,15 +25,11 @@ function doPost(e){
 
 function sendEmail(){
 
-  MailApp.sendEmail("contact.nelsonic@gmail.com",
-                   // "contact.nelsonic@gmail.com",
-                   "New Mobile SEM Enquiry ",
+  MailApp.sendEmail("contact.nelsonic@gmail.com",   // to
+                   "dwyl.notifications@gmail.com",  // from
+                   "Your Subject Goes Here",        // email subject
                    "Please Check the Google Spreadsheet");
 
-  GmailApp.sendEmail("contact.nelsonic@gmail.com", // end
-                   // "contact.nelsonic@gmail.com",
-                   "GMAIL New Mobile SEM Enquiry",
-                   "Please Check the Google Spreadsheet");
 }
 
 function handleResponse(e) {
