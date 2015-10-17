@@ -22,7 +22,7 @@ The *plan* is to *simulate* the `POST` request an *actual* Google Form sends whe
 
 ## How? >> Google Apps *Script*
 
-### 1 Open & Make a Copy of the Sample Spreadsheet
+### 1. Open & Make a Copy of the Sample Spreadsheet
 
 Open the Sample Google Spreasheet (*Ensure you are signed into your Google Account*)
 
@@ -30,32 +30,32 @@ Open the Sample Google Spreasheet (*Ensure you are signed into your Google Accou
 
 ![12-gscript-make-a-copy](https://cloud.githubusercontent.com/assets/194400/10540271/75e1df1a-73fe-11e5-8304-2492683e1394.png)
 
-### 2 Open the Script Editor
+### 2. Open the Script Editor
 
 Once you have made the copy, open the ***Script Editor***
 so you can edit the App Script
 
 ![12 2-open-the-script-editor](https://cloud.githubusercontent.com/assets/194400/10540508/885f8dac-7400-11e5-9557-ae4c436df343.png)
 
-### 3 Publish as a Web App
+### 3. Publish as a Web App
 
 Without modifying the sample script, Publish it!
 
 ![12 3-publish-as-web-app](https://cloud.githubusercontent.com/assets/194400/10540579/1b275cb4-7401-11e5-894c-f49ad7fa2591.png)
 
-### 4 Deploy the Script as a *Web App*
+### 4. Deploy the Script as a *Web App*
 
 Deploy the script as a "Web App"
 
 ![12 4-deploy-as-web-app](https://cloud.githubusercontent.com/assets/194400/10540599/51e2216c-7401-11e5-8c44-7351c129eb9d.png)
 
-### 5 Authorize the App for your Google Account
+### 5. Authorize the App for your Google Account
 
 *Authorize* the script to access your Google Drive
 
 ![12 5-authorise-to-run](https://cloud.githubusercontent.com/assets/194400/10540651/da345ed6-7401-11e5-896c-e7549581584c.png)
 
-### 6 Copy the URL of your newly deployed App
+### 6. Copy the URL of your newly deployed App
 
 You will need the url for step {X} below...
 
@@ -67,26 +67,26 @@ https://script.google.com/macros/s/AKfycby2i5t13ccSQ9e-atuknlnPDbqKplF2QUVFiWIX_
 ```
 But your *will* be different.
 
-### 7 Run the Setup Script
+### 7. Run the Setup Script
 
 The Setup Script gets the Name of your associated Google Spreadsheet
 so it knows where to put the data...
 
 ![12 7-run-setup-function](https://cloud.githubusercontent.com/assets/194400/10540765/e5da721a-7402-11e5-822a-0589c713cb47.png)
 
-### 8 Re-Publish ...
+### 8. Re-Publish ...
 
 Once you have run the Setup Script, *test* that it worked.
 
 ![12 8-test-your-code](https://cloud.githubusercontent.com/assets/194400/10540852/cc7f7170-7403-11e5-92e9-1d4a417dbf9b.png)
 
-### 9 Test Success
+### 9. Test Success
 
 Clicking that link will open a new page with a `JSON` result:
 
 ![12 8-success](https://cloud.githubusercontent.com/assets/194400/10540902/3baff970-7404-11e5-9c6b-36b886ea6fa2.png)
 
-### 10 Confirm the Row was Inserted
+### 10. Confirm the Row was Inserted
 
 Back in your spreadsheet, confirm that the row was inserted:
 
@@ -98,7 +98,7 @@ Back in your spreadsheet, confirm that the row was inserted:
 
 Copy the code from this [**index.html**](https://github.com/nelsonic/web-form-to-google-sheet/blob/6ed85d975a4d58ecd4731e71a288802952dfed38/index.html) and paste it into your own `index.html`
 
-### 12 Update the Script URL
+### 12. Update the Script URL
 
 Find the line in that defines the "ajax" request:
 
@@ -113,13 +113,13 @@ And update it to be the url for *your* "App" which you copied in step 12.6 above
 
 Save and open the form in your web browser.
 
-### 13 Submit the Form!
+### 13. Submit the Form!
 
 Enter some data and submit the form!
 
 ![12 13-submit-the-form](https://cloud.githubusercontent.com/assets/194400/10541023/8c80a4fc-7405-11e5-87d7-9b818ebdf0e6.png)
 
-### 14 Confirm the Data you Submitted was Inserted in the Spreadsheet
+### 14. Confirm the Data you Submitted was Inserted in the Spreadsheet
 
 Back in the spreadsheet, confirm that the row was inserted:
 
@@ -128,7 +128,7 @@ Back in the spreadsheet, confirm that the row was inserted:
 
 ## Customise!!
 
-### 15 Customise the Fields as Required
+### 15. *Customize* the Fields as Required
 
 ![custom fields](https://cloud.githubusercontent.com/assets/194400/10541119/64003b86-7406-11e5-9392-c5ee86af89ad.png)
 
@@ -153,7 +153,11 @@ Back in the spreadsheet, confirm that the row was inserted:
 </form>
 ```
 
-### 16 Submit the Form with the Custom Fields
+> Note: that the field names in the Google Spreadsheet (column headers)
+need to *match* the field names in the HTML ***exactly***
+so no spaces in names, *please*... best to use single words and all lowercase or use underscores to separate words.
+
+### 16. Submit the Form with the Custom Fields
 
 Save `index.html` and *open* it in your browser:
 
@@ -161,7 +165,7 @@ Save `index.html` and *open* it in your browser:
 
 Submit the form with some sample data!
 
-### 17 Confirm that it inserted a new Row in the Spreadsheet
+### 17. Confirm that it inserted a new Row in the Spreadsheet
 
 Back in your Google Sheet, confirm that the row was inserted:
 
@@ -169,22 +173,68 @@ Back in your Google Sheet, confirm that the row was inserted:
 
 ## Customize the Presentation
 
-Grab the HTML from the *existing* page
+Grab the HTML from the *existing* page and customize the form to your heart's content. You won't need to update the JavaScript because its *generic*, however you will need to match the field names in your HTML form to the column headings in the Spreadsheet for the data to get inserted correctly.
+
 
 ## Email
 
-Posted this OverFlow Question because I cannot get `MailApp.sendEmail`
-to work:
-http://stackoverflow.com/questions/33180172/why-does-mailapp-sendemail-from-google-spreadsheet-script-not-work
+An *additional* requirement was to send an **email** (***IKR***!)
+when ever the HTML Form is submitted.  
+Thankfully, Google has a good Method for doing this:
+[MaillApp](https://developers.google.com/apps-script/reference/mail/mail-app)
+
+### 18. Invoke the `MailApp.sendEmail` Method
+
+In your Google Spreadsheet *Script* call:
+
+```js
+MailApp.sendEmail("recipient.address@gmail.com", // to
+                  "sender.name@gmail.com",       // from
+                  "Your Subject Goes Here",      // email subject
+                  "What ever you want to say");  // email body
+```
+
+For this new functionality to *work* in your script you
+will need to "***Save a New Version***" and ***(Re-)Deploy your App***! (*simply clicking the :floppy_disk: "Save" is* ***Not Enough***!)
+
+### 19. Save a *New Version* of your Script
+
+It's not immediately *obivous* but you have to *click* on "*Manage Versions...*"
+
+![19 google-script-no-save-new-version](https://cloud.githubusercontent.com/assets/194400/10558249/527f3c98-74c1-11e5-8290-5af7fa7f5f75.png)
+
+Then *create* your new version:
+
+![20 google-script-save-new-version](https://cloud.githubusercontent.com/assets/194400/10558250/53d21d5e-74c1-11e5-88c5-7bc2d8ce6228.png)
+
+### 20. Re-Publish the *Updated* Script as a Web App
+
+![20 a-publish](https://cloud.githubusercontent.com/assets/194400/10558288/50980aa8-74c2-11e5-8576-72084a564779.png)
+
+Select the *latest* project version to deploy:
+
+![21 deploy-new-version](https://cloud.githubusercontent.com/assets/194400/10558251/570a5428-74c1-11e5-8ced-5dd26d3de3c4.png)
+
+Click "OK". No need to update the script *url* in your HTML form
+(*it does not change* - *there are pros & cons to this...*)
+
+![22 1-deploy-as-web-app](https://cloud.githubusercontent.com/assets/194400/10558255/6eec31e2-74c1-11e5-9c07-cea6209526df.png)
+
+## Done.
+
+# Want *More*?
+
+If you are want *more*, please
+[***ask***](https://github.com/nelsonic/web-form-to-google-sheet/issues)!
+
+<br />
+<br />
 
 ## Background Reading
 
-+ Record HTTP Form `POST`: http://stackoverflow.com/questions/5119861/record-http-form-posts-via-a-browser
-+ Firefox copy cURL Command: https://hacks.mozilla.org/2013/08/firebug-1-12-new-features/#copyAsCURL
-+ Add headers to JQuery Ajax request:
-http://stackoverflow.com/questions/10093053/add-header-in-ajax-request-with-jquery
 + AJAX post to google spreadsheet: http://stackoverflow.com/questions/10000020/ajax-post-to-google-spreadsheet which points to:
   + https://mashe.hawksey.info/2011/10/google-spreadsheets-as-a-database-insert-with-apps-script-form-postget-submit-method/
 + MailApp Service: https://developers.google.com/apps-script/reference/mail/mail-app
-+ CORS info: http://stackoverflow.com/questions/24371734/firefox-cors-request-giving-cross-origin-request-blocked-despite-headers
-+ CORS is is *meant* to block this... http://stackoverflow.com/questions/23607901/cross-origin-request-blocked-on
++ I Posted this OverFlow Question because I *could* not get `MailApp.sendEmail`
+to work:
+http://stackoverflow.com/questions/33180172/why-does-mailapp-sendemail-from-google-spreadsheet-script-not-work
