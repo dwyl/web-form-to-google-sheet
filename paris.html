@@ -393,10 +393,12 @@
                                 <div class="ofs-Form__HelpText rf-Required">* indicates a required field</div>
                             </div>
 
-                            <a class="ofs-Button browse-all">Browse All Paris Homes</a>
-
                         </div>
                     </form>
+                    <a class="ofs-Button browse_all"
+                    href="http://www.onefinestay.com/search/?city=465">
+                      Browse All Paris Homes
+                    </a>
                 </div>
             </div>
         </div>
@@ -413,9 +415,28 @@
       return re.test(email);
     }
 
+    // set the browse all url
+    // e.g: http://www.onefinestay.com/search/?city=108&start_date=2015-10-23&end_date=2015-10-31&sleeps=5
+    function browseAllUrl () {
+      var url = "http://www.onefinestay.com/search/?city="
+      var CITYCODE = 465; // Paris
+      var CITY   = $('#city').val();
+      console.log(CITY)
+      if(CITY === 'LON') {
+        CITYCODE = 108; // London
+      }
+      var params = CITYCODE;
+      params = params + "&start_date=" + $('#start_date').val();
+      params = params + "&end_date="   + $('#end_date').val();
+      params = params + "&sleeps="     + $('#sleeps').val();
+      url = url + params.replace(/\//g,'-');
+      $('.browse_all').attr("href", url);
+    }
+
     jQuery( document ).ready(function( $ ) {
         // variable to hold request
         var request;
+        browseAllUrl(); // set the url for results page.
         // bind to the submit event of our form
         $("#gform").submit(function(event){
 
@@ -439,7 +460,7 @@
             // serialize the data in the form
             var serializedData = $form.serialize();
 
-            // let's disable the inputs for the duration of the ajax request
+            // disable the inputs for the duration of the ajax request
             // Note: we disable elements AFTER the form data has been serialized.
             // Disabled form elements will not be serialized.
             $inputs.prop("disabled", true);
@@ -457,7 +478,7 @@
             request.done(function (response, textStatus, jqXHR){
               console.log(response, textStatus, jqXHR);
               $('#gform').html('<h2>Thanks! We will contact you soon!</h2>');
-              $('.browse-all').show();
+              $('.browse_all').show();
             });
 
             // callback handler that will be called on failure
@@ -482,7 +503,7 @@
     <!-- for some reason these styles don't get applied when they are included at the top!! -->
     <style>
     .rf-Message { display:block;color:#d80033;font-size:.875rem;line-height:1rem;}
-    #email-invalid, .browse-all { display: none; }
+    #email-invalid, .browse_all { display: none; }
     /* HIDE Nav Menu & FOOTER ON MOBILE LANDING PAGE - Requested by Naza */
     .ofs-GlobalFooter .ofs-GlobalFooter__Links, .ofs-GlobalFooter__UserConfig { display: none !important; }
     #mobile-menu-toggle, #mobile-contact-toggle, .ofs-GlobalHeader__MobileSearchWrapper { display: none !important; }
