@@ -396,19 +396,15 @@
       var url = "https://script.google.com/macros/s/AKfycbzFU_-z9lEQFy0exGZFlbd6dvtD4V07JaDI_3i_4J52OR3v8E_r/exec"; // prod
       var xhr = new XMLHttpRequest();
       xhr.open('POST', url);
+      // xhr.withCredentials = true;
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.onload = function() {
-        if (xhr.status === 200) {
+      xhr.onreadystatechange = function() {
+          console.log( xhr.status, xhr.statusText )
           console.log(xhr.responseText);
           document.getElementById('gform').style.display = 'none'; // hide form
           document.getElementById('thankyou').style.display = 'block';
           document.getElementById('browse_all').style.display = 'block';
           return;
-        }
-        else {
-          console.log('Request failed. Returned status: ' + xhr.status);
-          return;
-        }
       };
       // url encode form data for sending as post data
       var encoded = Object.keys(data).map(function(k) {
