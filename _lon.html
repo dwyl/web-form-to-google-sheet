@@ -363,8 +363,8 @@ We have selected 1200 of the best homes in London, ranging from Soho studios, ho
   function getFormData() {
     var data   = {
       city       : document.getElementById("city").value,
-      start_date : document.getElementById("start_date").value,
-      end_date   : document.getElementById("end_date").value,
+      start_date : document.getElementsByName("start_date")[0].value,
+      end_date   : document.getElementsByName("end_date")[0].value,
       sleeps     : document.getElementsByName("sleeps")[0].value,
       email      : document.getElementById("email").value
     }
