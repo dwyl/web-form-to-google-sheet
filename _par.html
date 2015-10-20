@@ -367,7 +367,7 @@
       city       : document.getElementById("city").value,
       start_date : document.getElementById("start_date").value,
       end_date   : document.getElementById("end_date").value,
-      sleeps     : document.getElementById("sleeps").value,
+      sleeps     : document.getElementsByName("sleeps")[0].value,
       email      : document.getElementById("email").value
     }
     console.log(data);
