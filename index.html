@@ -367,7 +367,7 @@
 
 <!-- Form submission handler to GoogleDocs -->
 <script data-cfasync="false" type="text/javascript">
-  // Client side email address validation Requested by Naza ... See: http://stackoverflow.com/a/46181
+  // Client side email validation Requested by Naza ... See: http://stackoverflow.com/a/46181
   function validEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
@@ -381,12 +381,12 @@
       sleeps     : select.options[select.selectedIndex].value,
       email      : document.getElementById("email").value
     }
+    console.log(data);
     return data;
   }
   // set the browse all url
   // e.g: http://www.onefinestay.com/search/?city=108&start_date=2015-10-23&end_date=2015-10-31&sleeps=5
   function browseAllUrl (data) {
-    console.log(data);
     var url = document.getElementById("browse_all").getAttribute('href');  // $('.browse_all').attr("href");
     var params = "&start_date="    + data.start_date; // $('#start_date').val();
     params = params + "&end_date=" + data.end_date;   // $('#end_date').val();
@@ -432,7 +432,6 @@
   }
 
   function loaded() {
-    console.log("Loaded!");
     // bind to the submit event of our form
     var form = document.getElementById('gform');
     form.addEventListener("submit", handleFormSubmit, false);
