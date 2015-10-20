@@ -1,82 +1,102 @@
-// Usage
-//  1. Enter sheet name where data is to be written below
-        var SHEET_NAME = "PAR";
+/******************************************************************************
+ * If you have any questions, please get in touch: contact.nelsonic@gmail.com *
+ ******************************************************************************/
 
-//  2. Run > setup
-//
-//  3. Publish > Deploy as web app
-//    - enter Project Version name and click 'Save New Version'
-//    - set security level and enable service (most likely execute as 'me' and access 'anyone, even anonymously)
-//
-//  4. Copy the 'Current web app URL' and post this in your form/script action
-//
-//  5. Insert column names on your destination sheet matching the parameter names of the data you are passing in (exactly matching case)
+var LON_ADDRESS1 = "london.reservations@reservations.company.com";
+var LON_ADDRESS2 = "london@reservations.company.com";
+var PAR_ADDRESS  = "paris@reservations.company.com";
 
-var SCRIPT_PROP = PropertiesService.getScriptProperties(); // new property service
 
-// If you don't want to expose either GET or POST methods you can comment out the appropriate function
-function doGet(e){
-  return handleResponse(e);
+function dayOfWeek () {
+  new Date().getDay();
 }
 
-function doPost(e){
-  return handleResponse(e);
+function getAddress (e) {
+  if(e.parameter['city'] === 'LON') {
+    if(dayOfWeek() % 2 === 0) { // even days are Sun, Tues, Thurs
+      return LON_ADDRESS1;
+    }
+    else { // Monday Wednesday Friday
+      return LON_ADDRESS2;
+    }
+
+  }
+  else {
+   return PAR_ADDRESS;
+  }
 }
 
-function sendEmail(){
-
-  MailApp.sendEmail("contact.nelsonic@gmail.com",   // to
-                   "dwyl.notifications@gmail.com",  // from
-                   "Your Subject Goes Here",        // email subject
-                   "Please Check the Google Spreadsheet");
-
-}
-
-function handleResponse(e) {
-
-  sendEmail();
-
-  // we want a public lock, one that locks for all invocations
-  var lock = LockService.getPublicLock();
-  lock.waitLock(30000);  // wait 30 seconds before conceding defeat.
+function doPost(e) {
 
   try {
+    Logger.log(e); // the Google Script version of console.log see: Class Logger
+    var ROW_NUMBER = record_data(e); // saves the data to the spreadsheet and returns ROW_NUMBER
+    var TO_ADDRESS = getAddress(e);
+    var START      = e.parameter['start_date'] || "no start"; // date or blank
+    var END        = e.parameter['end_date']   || "no end"; // date or blank
+    var CITY       = e.parameter['city'];
+    var SLEEPS     = e.parameter['sleeps'] || "TBD";
+    var SUBJECT    = "*MOBILE* Enquiry for " + CITY
+    + " from: " + START  + " - " + END + " "
+    + " for " + SLEEPS + " people "
+    +" (Enquiry # " +ROW_NUMBER  + ") GO GET IT!"
+    MailApp.sendEmail(TO_ADDRESS, SUBJECT,
+                      "Please check the Google Spreadsheet http://goo.gl/EkRtIX");
+    return ContentService    // return json success results
+          .createTextOutput(
+            JSON.stringify({"result":"success",
+                            "data": JSON.stringify(e.parameters) }))
+          .setMimeType(ContentService.MimeType.JSON);
+  } catch(error) { // if error return this
+    Logger.log(error);
+    return ContentService
+          .createTextOutput(JSON.stringify({"result":"error", "error": e}))
+          .setMimeType(ContentService.MimeType.JSON);
+  }
+}
 
-//    MailApp.sendEmail("contact.nelsonic@gmail.com", "contact.nelsonic@gmail.com", "New Mobile SEM Enqiry", "Please Check the Google Spreadsheet for details!");
-    // next set where we write the data - you could write to multiple/alternate destinations
-    var doc = SpreadsheetApp.openById(SCRIPT_PROP.getProperty("key"));
-    var sheet = doc.getSheetByName(SHEET_NAME);
+// new property service GLOBAL
+var SCRIPT_PROP = PropertiesService.getScriptProperties();
+// see: https://developers.google.com/apps-script/reference/properties/
 
-    // we'll assume header is in row 1 but you can override with header_row in GET/POST data
-    var headRow = e.parameter.header_row || 1;
+/**
+ * select the sheet
+ */
+function setup() {
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    SCRIPT_PROP.setProperty("key", doc.getId());
+}
+
+/**
+ * record_data inserts the data received from the html form submission
+ * e is the data received from the POST
+ * @param {Object} e - the POST parameters
+ * @returns {Number} ROW_NUMBER - the row number for the latest row in the sheet.
+ */
+function record_data(e) {
+  Logger.log(JSON.stringify(e)); // log the POST data in case we need to debug it
+  var ROW_NUMBER;
+  try {
+    var doc     = SpreadsheetApp.openById(SCRIPT_PROP.getProperty("key"));
+    var sheet   = doc.getSheetByName('LON+PAR'); // select the responses sheet
     var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     var nextRow = sheet.getLastRow()+1; // get next row
-    var row = [];
+    ROW_NUMBER  = nextRow; // this gets returned so we can included it in the email sbject
+    var row     = [ new Date() ]; // first element in the row should always be a timestamp
     // loop through the header columns
-    for (i in headers){
-      if (headers[i] == "Timestamp"){ // special case if you include a 'Timestamp' column
-        row.push(new Date());
-      } else { // else use header name to get data
-        row.push(e.parameter[headers[i]]);
+    for (var i = 1; i < headers.length; i++) { // start at 1 to avoid Timestamp column
+      if(headers[i].length > 0 && e.parameter[headers[i]] !== undefined) {
+        row.push(e.parameter[headers[i]]); // add data to row
       }
     }
     // more efficient to set values as [][] array than individually
     sheet.getRange(nextRow, 1, 1, row.length).setValues([row]);
-    // return json success results
-    return ContentService
-          .createTextOutput(JSON.stringify({"result":"success", "row": nextRow}))
-          .setMimeType(ContentService.MimeType.JSON);
-  } catch(e){
-    // if error return this
-    return ContentService
-          .createTextOutput(JSON.stringify({"result":"error", "error": e}))
-          .setMimeType(ContentService.MimeType.JSON);
-  } finally { //release lock
-    lock.releaseLock();
   }
-}
+  catch(error) {
+    Logger.log(e);
+  }
+  finally {
+    return ROW_NUMBER;
+  }
 
-function setup() {
-    var doc = SpreadsheetApp.getActiveSpreadsheet();
-    SCRIPT_PROP.setProperty("key", doc.getId());
 }
