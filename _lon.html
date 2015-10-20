@@ -299,13 +299,13 @@ We have selected 1200 of the best homes in London, ranging from Soho studios, ho
                       <p>Once submitted, you will be free to browse our homes!</p>
                     </div>
                     <form class="ofs-Form" id="gform">
-                        <input type="hidden" name="city" value="LON">
+                        <input type="hidden" id="city" name="city" value="LON">
                         <div class="ofs-grid">
                             <div class="ofs-Grid__Column ofs-Grid__Column--half">
-                                <input type="date" data-ofs-component="newDatepicker" id="start_date" data-name="start_date" data-placeholder="Arrival" />
+                                <div data-ofs-component="newDatepicker" id="start_date" data-name="start_date" data-placeholder="Arrival"></div>
                             </div>
                             <div class="ofs-Grid__Column ofs-Grid__Column--half">
-                                <input type="date" data-ofs-component="newDatepicker" id="end_date" data-name="end_date" data-placeholder="Departure" />
+                                <div data-ofs-component="newDatepicker" id="end_date" data-name="end_date" data-placeholder="Departure"></div>
                             </div>
                         </div>
                         <div class="ofs-grid">
@@ -363,6 +363,7 @@ We have selected 1200 of the best homes in London, ranging from Soho studios, ho
   function getFormData() {
     var select = document.getElementById("sleeps");     // get sleeps selector
     var data   = {
+      city       : document.getElementById("city").value,
       start_date : document.getElementById("start_date").value,
       end_date   : document.getElementById("end_date").value,
       sleeps     : select.options[select.selectedIndex].value,
