@@ -361,12 +361,11 @@ We have selected 1200 of the best homes in London, ranging from Soho studios, ho
   }
   // get all data in form and return object
   function getFormData() {
-    var select = document.getElementById("sleeps");     // get sleeps selector
     var data   = {
       city       : document.getElementById("city").value,
       start_date : document.getElementById("start_date").value,
       end_date   : document.getElementById("end_date").value,
-      sleeps     : select.options[select.selectedIndex].value,
+      sleeps     : document.getElementById("sleeps").value,
       email      : document.getElementById("email").value
     }
     console.log(data);
