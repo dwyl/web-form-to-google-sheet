@@ -27,7 +27,6 @@
         background-position: 50% 50%;
         -ms-background-size: cover;
         -o-background-size: cover;
-        -moz-background-size: cover;
         -webkit-background-size: cover;
         background-size: cover;
     }
@@ -66,7 +65,6 @@
             background-position: 50% 50%;
             -ms-background-size: cover;
             -o-background-size: cover;
-            -moz-background-size: cover;
             -webkit-background-size: cover;
             background-size: cover;
             z-index: -1;
@@ -274,6 +272,7 @@
     #mobile-menu-toggle, #mobile-contact-toggle, .ofs-GlobalHeader__MobileSearchWrapper { display: none !important; }
     #phone_number { margin-top: 0.7em; }
     .bdd-enquire-modal-field-phone-number { border: 1px solid #CDCDD1; }
+    #phone_invalid { margin-top:0.5em; display: none; }
 </style>
 
 <div id="landing" a name="landing">
@@ -359,8 +358,9 @@ We have selected 1200 of the best homes in London, ranging from Soho studios, ho
                                     </div>
                                   </div>
                                   <div class="ofs-Input__Value">
-                                    <input class="bdd-enquire-modal-field-phone-number" type="tel">
+                                    <input class="bdd-enquire-modal-field-phone-number" type="tel" id="telephone">
                                   </div>
+                                  <span id="phone_invalid" class="rf-Message" style="display:none;">Please enter a valid phone number.</span>
                                 </div>
                               </div>
                             </div>
@@ -397,7 +397,7 @@ We have selected 1200 of the best homes in London, ranging from Soho studios, ho
       city         : document.getElementById("city").value,
       start_date   : document.getElementsByName("start_date") > 0   ? document.getElementsByName("start_date")[1].value   : '',
       end_date     : document.getElementsByName("end_date")   > 0   ? document.getElementsByName("end_date")[1].value     : '',
-      phone_number : document.getElementsByName("phone_number") > 0 ? document.getElementsByName("phone_number")[0].value : '123',
+      phone_number : document.getElementsByName("phone_number") > 0 ? document.getElementsByName("phone_number")[0].value : '8888888',
       sleeps       : document.getElementsByName("sleeps")           ? document.getElementsByName("sleeps")[0].value       : '',
       email        : document.getElementById("email") ? document.getElementById("email").value : ''
     }
@@ -420,7 +420,15 @@ We have selected 1200 of the best homes in London, ranging from Soho studios, ho
   function handleFormSubmit(event) {
     event.preventDefault();     // we are submitting via xhr below
     var data = getFormData();   // get the values submitted in the form
-    if( document.getElementById("email") && !validEmail(data.email) ) {
+    var phone = document.getElementsByClassName('bdd-enquire-modal-field-phone-number');
+    // http://stackoverflow.com/a/6449750/1148249
+    if (phone && phone[0].value && ( isNaN(phone[0].value) || phone[0].value.length < 7) ) {
+      console.log(phone[0].value);
+      document.getElementById('telephone').style.border = '1px solid #ED5434';
+      document.getElementById('phone_invalid').style.display = 'block';
+      return false;
+    }
+    else if ( document.getElementById("email") && !validEmail(data.email) ) {
       document.getElementById('email-invalid').style.display = 'block';
       return false;
     } else {
