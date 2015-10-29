@@ -1,0 +1,457 @@
+<style type="text/css" scoped>
+    /**
+    * CSS coded to be mobile first. All media
+    * queries are then added by individual component
+    * to adjust for the various break points.
+    **/
+    #landing .ofs-LandingPage__Heading {
+        text-align: center;
+    }
+    /**
+    * Background image is applied in two different
+    * ways in order to get desired responsive behavior.
+    * Mobile version: image is contained in
+    * ofs-Heading__BackgroundImage with
+    * ofs-LandingPage__Heading as the parent. Desktop
+    * version: ofs-Heading__BackgroundImage is hidden,
+    * and the image is contained in the ::after element
+    * for ofs-LandingPage__Headinga
+    **/
+    #landing .ofs-Heading__BackgroundImage {
+        display: block;
+        min-height: 200px;
+        width: 100%;
+        padding-bottom: calc((5/8) * 100%);
+        background-image: url('https://ofs-media-production.s3.amazonaws.com/media-library/EUROSTAR_Landing_page_new_2742x916.jpg');
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    #landing .ofs-Heading__TextOnBackground {
+        margin: 1.5rem 0;
+    }
+    /* Override h1 styles for mobile */
+    #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Title {
+        padding: 0 2.5rem;
+        font-size: 1.625rem;
+        line-height: 2rem;
+    }
+    /* Override h2 styles for mobile */
+    #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Subtitle {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    @media screen and (min-width: 641px) {
+        #landing .ofs-LandingPage__Heading {
+            position: relative;
+            min-height: 380px; /* Match height of standard screen width, but don't fix, because we need mobile to expand height to fit */
+            background-color: #2a2730; /* Set a dark background for the image opacity to fade into */
+            z-index: 1;
+        }
+        #landing .ofs-LandingPage__Heading::after {
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6; /* Used in conjunction with the element's background-color */
+            background-image: url('https://ofs-media-production.s3.amazonaws.com/media-library/EUROSTAR_Landing_page_new_2742x916.jpg.');
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            -ms-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            background-size: cover;
+            z-index: -1;
+        }
+        /* vertically and horizontally center group of elements in heading */
+        #landing .ofs-LandingPage__Contents {
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+        /* This element is used in the mobile version and must be hidden for larger screens */
+        #landing .ofs-Heading__BackgroundImage {
+            display: none;
+        }
+        /* Remove margin since it throws off the vertical centering for parent */
+        #landing .ofs-Heading__TextOnBackground {
+            margin-top: 0;
+        }
+        /* Forces the text color to white for text on-top of background images */
+        #landing .ofs-Heading__TextOnBackground h1,
+        #landing .ofs-Heading__TextOnBackground h2,
+        #landing .ofs-Heading__TextOnBackground h3,
+        #landing .ofs-Heading__TextOnBackground h4,
+        #landing .ofs-Heading__TextOnBackground h5,
+        #landing .ofs-Heading__TextOnBackground h6 {
+            color: white;
+        }
+        /* Reset h1 & h2 after custom mobile responsiveness */
+        #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Title {
+            margin-bottom: .5rem; /* fix to pull the sub-text closer to the header */
+            padding: 0;
+            font-size: 2.3125rem;
+            line-height: 3rem;
+        }
+        /* Reset h1 & h2 after custom mobile responsiveness */
+        #landing .ofs-Heading__TextOnBackground .ofs-LandingPage__Subtitle {
+            width: 430px;
+            font-size: 1.3125rem;
+            line-height: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    #landing .ofs-Heading__SearchBar {
+        padding: 1.5rem;
+        border-radius: 2px;
+        margin: 1rem auto;
+    }
+    /* Wrapper for Arrival and Departure fields. This gets modified from screensizes 641-851px */
+    .ofs-Heading__SearchBarColumnWrapper {
+        margin-bottom: 0;
+    }
+    /* Eliminate extra spacing between Form and value props */
+    .ofs-Heading__SearchBar .ofs-Form {
+        margin-bottom: 0;
+    }
+    /* Aligns all of the search placeholders left */
+    .ofs-Heading__SearchBar .ofs-Form .ofs-Input {
+        text-align: left;
+    }
+    /* Fix for inline forms without labels */
+    .ofs-Button--inline {
+        margin-top: 1.5rem;
+    }
+    /* Custom grid style for laptop (851px+) */
+    .ofs-Grid__Column--medium-half {
+        width: 100%;
+    }
+    /* Custom grid style to always be 50% regardless of screensize */
+    .ofs-Grid__Column--permanent-half {
+        width: 50%;
+    }
+    #landing .CallToAction-browse-top{
+        display: none;
+        text-align: right;
+        padding-bottom: 0.5rem;
+        }
+     #landing .CallToAction-browse-bottom{
+        display:block;
+        padding-top: 0.5rem;
+        text-align: left;
+     }
+    @media screen and (min-width: 641px) {
+        .ofs-Button--inline {
+        margin-top: 0rem;
+    }
+    }
+    @media screen and (min-width: 851px) {
+        /* Expand and constrain width slightly so that everything fits inline */
+        #landing .ofs-Heading__SearchBar {
+           width: 750px;
+        }
+        /* Remove input field's bottom margins when they're inline */
+        #landing .ofs-Heading__SearchBarColumnWrapper {
+            margin-bottom: 0;
+        }
+        /* Custom grid style for laptop (851px+) */
+        #landing .ofs-Grid__Column--medium-half {
+            width: 50%;
+        }
+    }
+    /* Modified homepage styling to make spacing consistent */
+    .about-wrap-container{
+        background-color: #F8F6F1;
+    }
+    .about-wrap {
+        margin-bottom: 2.5rem;
+    }
+    .about-wrap .heading {
+        text-align: center;
+    }
+    .about-wrap .values {
+        width: 100%;
+        padding-top: 1rem;
+    }
+    .about-wrap .values:after {
+        content: ".";
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both
+    }
+    .about-wrap .values__Item {
+        padding: 0 5px;
+        width: 50%;
+    }
+    .about-wrap .values--upper {
+        margin-bottom: 2.5rem;
+    }
+    .about-wrap .values--upper,
+    .about-wrap .values--lower {
+        padding: 0 5px;
+    }
+    .about-wrap .values__Item__Image {
+        display: block;
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 2rem auto;
+    }
+    .about-wrap .values__Item__Copy {
+        text-align: center;
+        margin-bottom: 0;
+        padding: 0 1rem;
+    }
+    .press-wrap {
+        border-top: 1px solid #cdcdd1;
+        border-bottom: 1px solid #cdcdd1;
+        display: block;
+        margin-bottom: 2.5rem;
+    }
+    @media only screen and (min-width:641px) {
+        .about-wrap .values--upper,
+        .about-wrap .values--lower {
+            width: 50%;
+            float: left;
+            margin-bottom: 0;
+        }
+    }
+    @media only screen and (min-width:1025px) {
+        .about-wrap .values__Item {
+            padding: 0 40px;
+        }
+    }
+    .browse-homes{
+        color: white;
+        background-color: #2A2730;
+    }
+    /*Video container*/
+    .video-container{
+        width: 500px;
+        height: 281px;
+    }
+    @media only screen and (max-width: 500px){
+        .video-container{
+            width: 282px;
+            height: 158px;
+        }
+    }
+    .heading{
+        text-align: center;
+    }
+    .search-bar{
+        padding: 1.5rem 0;
+        background-color: #F6F7F9;
+    }
+    .search-cta{
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 1rem;
+    }
+    .sleep-selector{
+        padding-bottom: 1.5rem;
+    }
+    .section{
+        margin: 2rem 0;
+    }
+    /******************* MOBILE SEM LANDING PAGE STYLES ***********************/
+    .rf-Message { display:block;color:#d80033;font-size:.875rem;line-height:1rem;}
+    #email-invalid, .browse_all { display: none; }
+    /* HIDE Nav Menu & FOOTER ON MOBILE LANDING PAGE - Requested by Naza */
+    .ofs-GlobalFooter .ofs-GlobalFooter__Links, .ofs-GlobalFooter__UserConfig { display: none !important; }
+    #mobile-menu-toggle, #mobile-contact-toggle, .ofs-GlobalHeader__MobileSearchWrapper { display: none !important; }
+</style>
+
+<div id="landing">
+
+    <div class="ofs-LandingPage__Heading">
+        <div class="ofs-LandingPage__Contents">
+            <div class="ofs-Heading__TextOnBackground">
+                <h1 class="ofs-LandingPage__Title">
+                  We have selected 500 of the best homes in Paris, ranging from Marais studios to penthouses by the Eiffel Tower
+                </h1>
+
+            </div>
+            <!-- only visible on mobile -->
+            <div class="ofs-Heading__BackgroundImage" id="LONDON_BG"></div>
+        </div>
+    </div>
+
+
+    <div class="ofs-Container">
+        <div class="ofs-Container__Content">
+            <div class="ofs-EditorialGrid section">
+                <div class="ofs-EditorialGrid__Column ofs-EditorialGrid__Column--half">
+                    <div class="ofs-Grid search-cta">
+                        <h2>Find a Paris home</h2>
+                        <p>With just a few details, our dedicated reservations team will get back to you with a shortlist of homes that meet your requirements within 15 minutes.</p>
+                        <p>Once submitted, you will be free to browse our homes!</p>
+                    </div>
+                    <form class="ofs-Form" id="gform">
+                        <input type="hidden" id="city" name="city" value="PAR" />
+                        <div class="ofs-grid">
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <div data-ofs-component="newDatepicker" id="start_date" data-name="start_date" data-placeholder="Arrival"></div>
+                            </div>
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <div data-ofs-component="newDatepicker" id="end_date" data-name="end_date" data-placeholder="Departure"></div>
+                            </div>
+                        </div>
+                        <div class="ofs-grid">
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <select name="sleeps" id="sleeps" data-ofs-component="simpleChoice">
+                                    <option value="">Guests</option>
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
+                                    <option value=5>5</option>
+                                    <option value=6>6</option>
+                                    <option value=7>7</option>
+                                    <option value=8>8</option>
+                                    <option value=9>9</option>
+                                </select>
+                            </div>
+
+                            <!-- Disable Email Field for this Experiment
+                            <div class="ofs-grid">
+                             <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                  <div class="ofs-Form__Field">
+                                  <p class="ofs-Form__Label" id="email-label"></p>
+                                  <input required name="email" id="email" type="email" placeholder="Email address*"></input>
+                                  <span id="email-invalid" class="rf-Message">Must be a valid email address</span>
+                                  </div>
+                              </div>
+                            </div>
+                          -->
+                            <div class="ofs-Grid__Column ofs-Grid__Column--full">
+                              <div class="ofs-Form__Field ofs-Form__Field--required">
+                                <label class="ofs-Form__Label rf-Label">
+                                  <span class="rf-Label__label">Phone number*</span>
+                                </label>
+                                <div class="ofs-Input__Wrapper">
+                                  <input name="phone_number" type="hidden">
+                                  <div class="ofs-Input__Prefix">
+                                    <div>
+                                      <input style="position:absolute;width:0;" tabindex="-1" type="text">
+                                      <div class="ofs-SimpleChoice bdd-enquire-modal-field-phone-country" role="listbox" aria-haspopup="true" aria-activedescendant="false" tabindex="0">
+                                        <div class="ofs-SimpleChoice__Value ofs-SimpleChoice__Value--placeholder">--</div>
+                                        <div class="ofs-SimpleChoice__Arrow">
+                                          <div class="ofs-Icon ofs-Icon--arrow ofs-Icon--arrow-down ofs-Icon--small">
+                                            <svg class="ofs-Icon__Container">
+                                              <use xlink:href="#ofs-icons--arrow-20"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="ofs-Input__Value">
+                                    <input class="bdd-enquire-modal-field-phone-number" type="tel">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <button class="ofs-Button ofs-Button--small ofs-Button--full-width ofs-Button--inline">Submit</button>
+                                <div class="ofs-Form__HelpText rf-Required">* indicates a required field</div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="heading">
+                      <h2 id="thankyou" style="display:none">Thanks! We will contact you soon!</h2>
+                    <di>
+                    <a class="ofs-Button" id="browse_all" style="display:none"
+                    href="http://www.onefinestay.com/search/?city=465">
+                      Browse All Paris Homes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Form submission handler to GoogleDocs -->
+<script data-cfasync="false" type="text/javascript">
+  // Client side email validation Requested by Naza ... See: http://stackoverflow.com/a/46181
+  function validEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+  }
+  // get all data in form and return object
+  function getFormData() {
+    var data   = {
+      city         : document.getElementById("city").value,
+      start_date   : document.getElementsByName("start_date") > 0   ? document.getElementsByName("start_date")[1].value   : '',
+      end_date     : document.getElementsByName("end_date")   > 0   ? document.getElementsByName("end_date")[1].value     : '',
+      phone_number : document.getElementsByName("phone_number") > 0 ? document.getElementsByName("phone_number")[0].value : '123',
+      sleeps       : document.getElementsByName("sleeps")           ? document.getElementsByName("sleeps")[0].value       : '',
+      email        : document.getElementById("email") ? document.getElementById("email").value : ''
+    }
+
+    console.log(data);
+    return data;
+  }
+  // set the browse all url
+  // e.g: http://www.onefinestay.com/search/?city=108&start_date=2015-10-23&end_date=2015-10-31&sleeps=5
+  function browseAllUrl (data) {
+    var url = document.getElementById("browse_all").getAttribute('href');  // $('.browse_all').attr("href");
+    var params = "&start_date="    + data.start_date; // $('#start_date').val();
+    params = params + "&end_date=" + data.end_date;   // $('#end_date').val();
+    params = params + "&sleeps="   + data.sleeps;     // $('#sleeps option:selected').val();
+    url = url + params.replace(/\//g,'-');
+    console.log("Browse all:" + url);
+    document.getElementById("browse_all").href = url; // $('.browse_all').attr("href", url);
+  }
+  // handles form submit withtout any jquery
+  function handleFormSubmit(event) {
+    event.preventDefault();     // we are submitting via xhr below
+    var data = getFormData();   // get the values submitted in the form
+    if( document.getElementById("email") && !validEmail(data.email) ) {
+      document.getElementById('email-invalid').style.display = 'block';
+      return false;
+    } else {
+      browseAllUrl(data); // set the url for search results page.
+      // var url = "https://script.google.com/macros/s/AKfycbzFU_-z9lEQFy0exGZFlbd6dvtD4V07JaDI_3i_4J52OR3v8E_r/exec"; // prod
+      var url = "https://script.google.com/macros/s/AKfycbzodNnKcXPo5_x1OmbV8bMBpJYnNDxSWqIklB0mWh3fKb7-Z20/exec"; // test
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', url);
+      // xhr.withCredentials = true;
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onreadystatechange = function() {
+          console.log( xhr.status, xhr.statusText )
+          console.log(xhr.responseText);
+          document.getElementById('gform').style.display = 'none'; // hide form
+          document.getElementById('thankyou').style.display = 'block';
+          document.getElementById('browse_all').style.display = 'block';
+          return;
+      };
+      // url encode form data for sending as post data
+      var encoded = Object.keys(data).map(function(k) {
+          return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+      }).join('&')
+      xhr.send(encoded);
+    }
+  }
+
+  function loaded() {
+    // bind to the submit event of our form
+    var form = document.getElementById('gform');
+    form.addEventListener("submit", handleFormSubmit, false);
+  };
+  document.addEventListener('DOMContentLoaded', loaded, false);
+</script>

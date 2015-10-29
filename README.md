@@ -222,9 +222,22 @@ Click "OK". No need to update the script *url* in your HTML form
 
 ## Done.
 
+
+# Phase 2 - Phone Number Experiment
+
+> Hypothesis: for high value items some people will prefer to
+speak to a *person* on the phone instead of emails.
+Therefore having a form input for Phone Number will "*convert*"" better
+than email.
+
+I've added two new files: `_lon-phone.html` and `_par-phone.html`
+to *test* this Hypothesis.
+
+
+
 # Want *More*?
 
-If you are want *more*, please
+If you want *more*, please
 [***ask***](https://github.com/nelsonic/web-form-to-google-sheet/issues)!
 
 <br />
