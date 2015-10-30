@@ -269,8 +269,8 @@
     /* HIDE Nav Menu & FOOTER ON MOBILE LANDING PAGE - Requested by Naza */
     .ofs-GlobalFooter .ofs-GlobalFooter__Links, .ofs-GlobalFooter__UserConfig { display: none !important; }
     #mobile-menu-toggle, #mobile-contact-toggle, .ofs-GlobalHeader__MobileSearchWrapper { display: none !important; }
-    #phone_number { margin-top: 0.7em; }
-    .bdd-enquire-modal-field-phone-number { border: 1px solid #CDCDD1; }
+    #phone_number_wrapper { margin-top: 0.7em; }
+    #phone_number { border: 1px solid #CDCDD1; width: 100% }
     #phone_invalid { margin-top:0.5em; display: none; }
 </style>
 
@@ -336,13 +336,13 @@
                               </div>
                             </div>
                           -->
-                            <div class="ofs-Grid__Column ofs-Grid__Column--full" id="phone_number">
+                            <div class="ofs-Grid__Column ofs-Grid__Column--full" id='phone_number_wrapper'>
                               <div class="ofs-Form__Field ofs-Form__Field--required">
-                                <label class="ofs-Form__Label rf-Label">
+                                <!-- <label class="ofs-Form__Label rf-Label">
                                   <span class="rf-Label__label">Phone number*</span>
-                                </label>
+                                </label> -->
                                 <div class="ofs-Input__Wrapper">
-                                  <input name="phone_number" type="hidden">
+                                  <!--
                                   <div class="ofs-Input__Prefix">
                                     <div>
                                       <input style="position:absolute;width:0;" tabindex="-1" type="text">
@@ -358,8 +358,10 @@
                                       </div>
                                     </div>
                                   </div>
+                                -->
                                   <div class="ofs-Input__Value">
-                                    <input class="bdd-enquire-modal-field-phone-number" type="tel" id="telephone" placeholder="phone number*">
+                                    <input name="phone_number" class="bdd-enquire-modal-field-phone-number"
+                                    type="tel" id="phone_number" placeholder="phone number*">
                                   </div>
                                   <span id="phone_invalid" class="rf-Message" style="display:none;">Please enter a valid phone number.</span>
                                 </div>
@@ -399,9 +401,9 @@
       city         : document.getElementById("city").value,
       start_date   : document.getElementsByName("start_date") > 0   ? document.getElementsByName("start_date")[1].value   : '',
       end_date     : document.getElementsByName("end_date")   > 0   ? document.getElementsByName("end_date")[1].value     : '',
-      phone_number : document.getElementsByName("phone_number") > 0 ? document.getElementsByName("phone_number")[0].value : '8888888',
       sleeps       : document.getElementsByName("sleeps")           ? document.getElementsByName("sleeps")[0].value       : '',
-      email        : document.getElementById("email") ? document.getElementById("email").value : ''
+      email        : document.getElementById("email") ? document.getElementById("email").value : '',
+      phone_number : document.getElementById("phone_number") ? document.getElementById("phone_number").value : '8888888'
     }
 
     console.log(data);
@@ -422,11 +424,11 @@
   function handleFormSubmit(event) {
     event.preventDefault();     // we are submitting via xhr below
     var data = getFormData();   // get the values submitted in the form
-    var phone = document.getElementsByClassName('bdd-enquire-modal-field-phone-number');
+    var phone = document.getElementById("phone_number");
     // http://stackoverflow.com/a/6449750/1148249
-    if (phone && phone[0].value && ( isNaN(phone[0].value) || phone[0].value.length < 7) ) {
-      console.log(phone[0].value);
-      document.getElementById('telephone').style.border = '1px solid #ED5434';
+    if (phone && phone.value && ( isNaN(phone.value) || phone.value.length < 7) ) {
+      console.log(phone.value);
+      document.getElementById('phone_number').style.border = '1px solid #ED5434';
       document.getElementById('phone_invalid').style.display = 'block';
       return false;
     }
