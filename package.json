@@ -1,6 +1,6 @@
 {
   "name": "web-form-to-google-sheet",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "post form directly to google spreadsheet without server",
   "main": "email.js",
   "scripts": {
