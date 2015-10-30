@@ -1,4 +1,4 @@
-<style type="text/css" scoped>
+<style type="text/css">
     /**
     * CSS coded to be mobile first. All media
     * queries are then added by individual component
@@ -60,11 +60,12 @@
             width: 100%;
             height: 100%;
             opacity: 0.6; /* Used in conjunction with the element's background-color */
-            background-image: url('https://ofs-media-production.s3.amazonaws.com/media-library/EUROSTAR_Landing_page_new_2742x916.jpg.');
+            background-image: url('https://ofs-media-production.s3.amazonaws.com/media-library/EUROSTAR_Landing_page_new_2742x916.jpg');
             background-repeat: no-repeat;
             background-position: 50% 50%;
             -ms-background-size: cover;
             -o-background-size: cover;
+            -webkit-background-size: cover;
             background-size: cover;
             z-index: -1;
         }
@@ -369,7 +370,7 @@
                             </div>
 
                             <div class="ofs-Grid__Column ofs-Grid__Column--half">
-                                <button class="ofs-Button ofs-Button--small ofs-Button--full-width ofs-Button--inline">Submit</button>
+                                <button class="ofs-Button ofs-Button--small ofs-Button--full-width ofs-Button--inline" id="submit">Submit</button>
                                 <div class="ofs-Form__HelpText rf-Required">* indicates a required field</div>
                             </div>
                         </div>
@@ -436,6 +437,7 @@
       document.getElementById('email-invalid').style.display = 'block';
       return false;
     } else {
+      document.getElementById("submit").disabled = true; 
       browseAllUrl(data); // set the url for search results page.
       // var url = "https://script.google.com/macros/s/AKfycbzFU_-z9lEQFy0exGZFlbd6dvtD4V07JaDI_3i_4J52OR3v8E_r/exec"; // prod
       var url = "https://script.google.com/macros/s/AKfycbzodNnKcXPo5_x1OmbV8bMBpJYnNDxSWqIklB0mWh3fKb7-Z20/exec"; // test
