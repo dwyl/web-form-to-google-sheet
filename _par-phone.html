@@ -337,17 +337,15 @@
                               </div>
                             </div>
                           -->
-                            <div class="ofs-Grid__Column ofs-Grid__Column--full" id='phone_number_wrapper'>
-                              <div class="ofs-Form__Field ofs-Form__Field--required">
-                                <div class="ofs-Input__Wrapper">
-                                  <div class="ofs-Input__Value">
-                                    <input name="phone_number" class="bdd-enquire-modal-field-phone-number"
-                                    type="tel" id="phone_number" placeholder="Phone number*">
-                                  </div>
-                                  <span id="phone_invalid" class="rf-Message" style="display:none;">Please enter a valid phone number.</span>
+                          <div class="ofs-grid" id="phone_number_wrapper">
+                           <div class="ofs-Grid__Column ofs-Grid__Column--half">
+                                <div class="ofs-Form__Field">
+                                <p class="ofs-Form__Label" id="email-label"></p>
+                                <input required name="phone_number" id="phone_number" type="tel" placeholder="Phone number*"></input>
+                                <span id="phone_invalid" class="rf-Message">Please enter a valid phone number</span>
                                 </div>
-                              </div>
                             </div>
+                          </div>
 
                             <div class="ofs-Grid__Column ofs-Grid__Column--half">
                                 <button class="ofs-Button ofs-Button--small ofs-Button--full-width ofs-Button--inline" id="submit">Submit</button>
