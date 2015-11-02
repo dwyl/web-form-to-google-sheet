@@ -270,9 +270,10 @@
     /* HIDE Nav Menu & FOOTER ON MOBILE LANDING PAGE - Requested by Naza */
     .ofs-GlobalFooter .ofs-GlobalFooter__Links, .ofs-GlobalFooter__UserConfig { display: none !important; }
     #mobile-menu-toggle, #mobile-contact-toggle, .ofs-GlobalHeader__MobileSearchWrapper { display: none !important; }
-    #phone_number_wrapper { margin-top: 1.5em; }
-    #phone { border: 1px solid #CDCDD1 !important; width: 100%; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
-    #phone_invalid { margin-top:0.5em; display: none; }
+    #phone { border: 1px solid #CDCDD1 !important; width: 100%;
+      margint-top: 1.5em;
+      -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+    #phone_invalid { margin-top:0.8em; display: none; }
 </style>
 
 <div id="landing" a name="landing">
@@ -405,7 +406,7 @@
     var data = getFormData();   // get the values submitted in the form
     var phone = document.getElementById("phone");
     // http://stackoverflow.com/a/6449750/1148249
-    if (phone && phone.value && ( isNaN(phone.value) || phone.value.length < 7) ) {
+    if (phone && ( isNaN(phone.value) || phone.value.length < 7) ) {
       console.log(phone.value);
       document.getElementById('phone').style.border = '1px solid #ED5434';
       document.getElementById('phone_invalid').style.display = 'block';
