@@ -3,8 +3,8 @@
 A simple example of sending data from an ordinary web form
 straight to a Google Spreadsheet *without a server*.
 
-This code was created for a client but **_is not up-to-date_**.
-We recommend checking out the walkthrough repo below instead:
+I created this code for a client, but it is **_not up-to-date_**.
+I recommend checking out the walkthrough repo below instead:
 https://github.com/dwyl/html-form-send-email-via-google-script-without-server
 
 <hr />
