@@ -3,9 +3,9 @@
 A simple example of sending data from an ordinary web form
 straight to a Google Spreadsheet *without a server*.
 
-> This repo is just a quick *example* I made. If you want a ***full step-by-step tutorial***, see:  
+For a walkthrough of the steps, please see the updated companion
+tutorial that can either email your data or push it to a Google Spreadsheet:
 https://github.com/dwyl/html-form-send-email-via-google-script-without-server
-
 
 <hr />
 <br />
