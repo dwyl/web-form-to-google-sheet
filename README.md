@@ -5,7 +5,7 @@ straight to a Google Spreadsheet *without a server*.
 
 I created this code for a client, but it is **_not up-to-date_**.
 I recommend checking out the walkthrough repo below instead:
-https://github.com/dwyl/html-form-send-email-via-google-script-without-server
+https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
 
 <hr />
 <br />
@@ -30,7 +30,7 @@ The *plan* is to *simulate* the `POST` request an *actual* Google Form sends whe
 ## How? >> Google Apps *Script*
 
 This repo is just a quick example I made. If you want a full step-by-step tutorial, see:
-https://github.com/dwyl/html-form-send-email-via-google-script-without-server
+https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
 
 ## Email
 
@@ -54,16 +54,16 @@ to *test* this Hypothesis.
 # Want *More*?
 
 If you want *more*, please
-[***ask***](https://github.com/nelsonic/web-form-to-google-sheet/issues)!
+[***ask***](https://github.com/dwyl/web-form-to-google-sheet/pulls)!
 
 <br />
 <br />
 
 ## Background Reading
 
-+ AJAX post to google spreadsheet: http://stackoverflow.com/questions/10000020/ajax-post-to-google-spreadsheet which points to:
++ AJAX post to google spreadsheet: https://stackoverflow.com/questions/10000020/ajax-post-to-google-spreadsheet which points to:
   + https://mashe.hawksey.info/2011/10/google-spreadsheets-as-a-database-insert-with-apps-script-form-postget-submit-method/
 + MailApp Service: https://developers.google.com/apps-script/reference/mail/mail-app
 + I Posted this OverFlow Question because I *could* not get `MailApp.sendEmail`
 to work:
-http://stackoverflow.com/questions/33180172/why-does-mailapp-sendemail-from-google-spreadsheet-script-not-work
+https://stackoverflow.com/questions/33180172/why-does-mailapp-sendemail-from-google-spreadsheet-script-not-work
