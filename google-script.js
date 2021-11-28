@@ -41,7 +41,7 @@ function doPost(e) {
     + " for " + SLEEPS + " people "
     +" (Enquiry # " +ROW_NUMBER  + ") GO GET IT!"
     MailApp.sendEmail(TO_ADDRESS, SUBJECT,
-                      "Please check the Google Spreadsheet http://goo.gl/EkRtIX");
+                      "Please check the Google Spreadsheet https://goo.gl/EkRtIX");
     return ContentService    // return json success results
           .createTextOutput(
             JSON.stringify({"result":"success",
