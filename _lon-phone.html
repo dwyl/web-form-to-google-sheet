@@ -359,7 +359,7 @@
                       <h2 id="thankyou" style="display:none">Thanks! We will contact you soon!</h2>
                     <di>
                     <a  class="ofs-Button" id="browse_all" style="display:none"
-                    href="http://www.onefinestay.com/search/?city=108">
+                    href="https://www.onefinestay.com/search/?city=108">
                       Browse All London Homes
                     </a>
                 </div>
@@ -370,7 +370,7 @@
 
 <!-- Form submission handler to GoogleDocs -->
 <script data-cfasync="false" type="text/javascript">
-  // Client side email validation Requested by Naza ... See: http://stackoverflow.com/a/46181
+  // Client side email validation Requested by Naza ... See: https://stackoverflow.com/a/46181
   function validEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
@@ -390,7 +390,7 @@
     return data;
   }
   // set the browse all url
-  // e.g: http://www.onefinestay.com/search/?city=108&start_date=2015-10-23&end_date=2015-10-31&sleeps=5
+  // e.g: https://www.onefinestay.com/search/?city=108&start_date=2015-10-23&end_date=2015-10-31&sleeps=5
   function browseAllUrl (data) {
     var url = document.getElementById("browse_all").getAttribute('href');  // $('.browse_all').attr("href");
     var params = "&start_date="    + data.start_date; // $('#start_date').val();
@@ -405,7 +405,7 @@
     event.preventDefault();     // we are submitting via xhr below
     var data = getFormData();   // get the values submitted in the form
     var phone = document.getElementById("phone");
-    // http://stackoverflow.com/a/6449750/1148249
+    // https://stackoverflow.com/a/6449750/1148249
     if (phone && ( isNaN(phone.value) || phone.value.length < 7) ) {
       console.log(phone.value);
       document.getElementById('phone').style.border = '1px solid #ED5434';

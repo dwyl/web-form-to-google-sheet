@@ -98,9 +98,9 @@ Still have the same CORS issue ... need to *re-think* this.
 
 ## Background Reading
 
-+ Record HTTP Form `POST`: http://stackoverflow.com/questions/5119861/record-http-form-posts-via-a-browser
++ Record HTTP Form `POST`: https://stackoverflow.com/questions/5119861/record-http-form-posts-via-a-browser
 + Firefox copy cURL Command: https://hacks.mozilla.org/2013/08/firebug-1-12-new-features/#copyAsCURL
 + Add headers to JQuery Ajax request:
-http://stackoverflow.com/questions/10093053/add-header-in-ajax-request-with-jquery
-+ CORS info: http://stackoverflow.com/questions/24371734/firefox-cors-request-giving-cross-origin-request-blocked-despite-headers
-+ CORS is is *meant* to block this... http://stackoverflow.com/questions/23607901/cross-origin-request-blocked-on
+https://stackoverflow.com/questions/10093053/add-header-in-ajax-request-with-jquery
++ CORS info: https://stackoverflow.com/questions/24371734/firefox-cors-request-giving-cross-origin-request-blocked-despite-headers
++ CORS is is *meant* to block this... https://stackoverflow.com/questions/23607901/cross-origin-request-blocked-on
